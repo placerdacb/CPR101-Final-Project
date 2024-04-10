@@ -1,0 +1,78 @@
+Last login: Mon Apr  8 16:21:36 on ttys000
+placerda@Priscillas-MacBook-Pro ~ % cd Downloads
+placerda@Priscillas-MacBook-Pro Downloads % cd CPR101-Final-Project-main
+placerda@Priscillas-MacBook-Pro CPR101-Final-Project-main % cd v1
+placerda@Priscillas-MacBook-Pro v1 % git config --global placerda "Priscilla"
+error: key does not contain a section: placerda
+placerda@Priscillas-MacBook-Pro v1 % git config --global user.name "Priscilla"
+placerda@Priscillas-MacBook-Pro v1 % git config --global user.email "placerda-cavalcante@senecacollege.ca"
+placerda@Priscillas-MacBook-Pro v1 % git init
+Initialized empty Git repository in /Users/placerda/Downloads/CPR101-Final-Project-main/v1/.git/
+placerda@Priscillas-MacBook-Pro v1 % git add file_name
+fatal: pathspec 'file_name' did not match any files
+placerda@Priscillas-MacBook-Pro v1 % git add converting.c
+placerda@Priscillas-MacBook-Pro v1 % git add converting.h
+placerda@Priscillas-MacBook-Pro v1 % git add fundamentals.c
+placerda@Priscillas-MacBook-Pro v1 % git add fundamentals.h
+placerda@Priscillas-MacBook-Pro v1 % git add manipulating.c
+placerda@Priscillas-MacBook-Pro v1 % git add manipulating.h
+placerda@Priscillas-MacBook-Pro v1 % git add tokenizing.c  
+placerda@Priscillas-MacBook-Pro v1 % git add tokenizing.h 
+placerda@Priscillas-MacBook-Pro v1 % git add main.c      
+placerda@Priscillas-MacBook-Pro v1 % git commit -m v1
+[main (root-commit) 396adda] v1
+ 9 files changed, 239 insertions(+)
+ create mode 100644 converting.c
+ create mode 100644 converting.h
+ create mode 100644 fundamentals.c
+ create mode 100644 fundamentals.h
+ create mode 100644 main.c
+ create mode 100644 manipulating.c
+ create mode 100644 manipulating.h
+ create mode 100644 tokenizing.c
+ create mode 100644 tokenizing.h
+placerda@Priscillas-MacBook-Pro v1 % git add converting.c
+placerda@Priscillas-MacBook-Pro v1 % git add converting.h  
+placerda@Priscillas-MacBook-Pro v1 % git add fundamentals.c
+placerda@Priscillas-MacBook-Pro v1 % git add fundamentals.h
+placerda@Priscillas-MacBook-Pro v1 % git add manipulating.c
+placerda@Priscillas-MacBook-Pro v1 % git add manipulating.h
+placerda@Priscillas-MacBook-Pro v1 % git add tokenizing.c  
+placerda@Priscillas-MacBook-Pro v1 % git add tokenizing.h  
+placerda@Priscillas-MacBook-Pro v1 % git add main.c        
+placerda@Priscillas-MacBook-Pro v1 % git commit -m v2      
+[main 9fe716a] v2
+ 6 files changed, 85 insertions(+), 140 deletions(-)
+placerda@Priscillas-MacBook-Pro v1 % git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	Final-Project_Test_Cases.xlsx
+	Fundamentals_test.png
+	README.md
+	converting_test.png
+	manipulation_test.png
+	tokenizing_test.png
+
+nothing added to commit but untracked files present (use "git add" to track)
+placerda@Priscillas-MacBook-Pro v1 % git log
+commit 9fe716a024866e825136847b8c25d4b132d8cd5f (HEAD -> main)
+Author: Priscilla <placerda-cavalcante@senecacollege.ca>
+Date:   Mon Apr 8 18:42:06 2024 -0400
+
+    v2
+
+commit 396adda42bb7bdeeaf1bd1f1b55550dba5c61950
+Author: Priscilla <placerda-cavalcante@senecacollege.ca>
+Date:   Mon Apr 8 17:24:53 2024 -0400
+
+    v1
+placerda@Priscillas-MacBook-Pro v1 % git --no paper log -p>final_project-git-log.txt
+unknown option: --no
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           [--super-prefix=<path>] [--config-env=<name>=<envvar>]
+           <command> [<args>]
+placerda@Priscillas-MacBook-Pro v1 %     

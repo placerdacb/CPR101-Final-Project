@@ -1,0 +1,142 @@
+commit 16bd060fbbac59c4a53e29a0cc3a6b904a4cb186
+Author: Fatemeh Ansari <fansari11@myseneca.ca>
+Date:   Tue Apr 9 17:39:21 2024 -0400
+
+    v2
+
+diff --git a/manipulating.c b/manipulating.c
+index acebd60..24a8e93 100644
+--- a/manipulating.c
++++ b/manipulating.c
+@@ -1,36 +1,33 @@
+-#include <stdio.h>      
+-#include <string.h>    
+-#define CRT_SECURE_NO_WARNINGS     
+-#define BUFFER_SIZE 80            
+-#include "manipulating.h"        
++// MANIPULATING SOURCE
++#define CRT_SECURE_NO_WARNINGS
++#define BUFFER_SIZE 80
++#include "manipulating.h"
+ 
+-// Function to demonstrate string concatenation
+-void manipulating(void) {
+-    printf("*** Start of Concatenating Strings Demo ***\n");
+-    // Declare buffer 
+-    char string1[BUFFER_SIZE];    
+-    char string2[BUFFER_SIZE];   
++void manipulating (void) {
++    printf("*** Start of Comparing Strings Demo ***\n");
++    char compare1[BUFFER_SIZE];
++    char compare2[BUFFER_SIZE];
++    int result;
++    // Loop until the user enters 'q' to quit
++do {
++    printf ("Type the 1st string to compare (q - to quit): \n"); 
++    fgets (compare1, BUFFER_SIZE, stdin);
++    compare1[strlen(compare1) - 1] = '\0';// Remove the newline character
++    // Check if the entered string is not 'q'
++    if (strcmp(compare1, "q") != 0) {
++        printf ("Type the 2nd string to compare: \n"); 
++        fgets (compare2, BUFFER_SIZE, stdin);
++        compare2 [strlen(compare2) - 1] = '\0';// Remove the newline character
++        // Compare the two strings
++        result=strcmp(compare1, compare2);
++        if (result < 0)
++            printf("\'%s\' string is less than \'%s\'\n", compare1, compare2);
++        else if (result == 0)
++            printf("\'%s\' string is equal to \'%s\'\n", compare1, compare2);
++        else
++            printf("\'%s\' string is greater than \'%s\'\n", compare1, compare2);
++    }
++} while (strcmp(compare1, "q") != 0);// Continue the loop until 'q' is entered
++printf("*** End of Comparing strings Demo ***\n\n");
+ 
+-    // Loop until user quits
+-    do {
+-        printf("Type the 1st string (q - to quit): \n");   
+-        // Read first string from user input
+-        fgets(string1, BUFFER_SIZE, stdin);    
+-        // Remove newline character from input
+-        string1[strlen(string1) - 1] = '\0';   
+-
+-        // If user does not enter "q", proceed with concatenation
+-        if ((strcmp(string1, "q") != 0)) {
+-            printf("Type the 2nd string: \n"); 
+-            // Read second string from user input
+-            fgets(string2, BUFFER_SIZE, stdin);    
+-            // Remove newline character from input
+-            string2[strlen(string2) - 1] = '\0';   
+-            // Concatenate second string to first string safely
+-            strcat_s(string1, BUFFER_SIZE, string2);
+-            printf("Concatenated string is \'%s\'\n", string1);   
+-        }
+-    } while (strcmp(string1, "q") != 0);   // Continue loop until user enters "q"
+-
+-    printf("*** End of Concatenating strings Demo ***\n\n");   
+-}
++}
+\ No newline at end of file
+
+commit 9846af6eae746024078ffc22b036080d4653b4b8
+Author: Fatemeh Ansari <fansari11@myseneca.ca>
+Date:   Tue Apr 9 17:38:33 2024 -0400
+
+    v1
+
+diff --git a/manipulating.c b/manipulating.c
+new file mode 100644
+index 0000000..acebd60
+--- /dev/null
++++ b/manipulating.c
+@@ -0,0 +1,36 @@
++#include <stdio.h>      
++#include <string.h>    
++#define CRT_SECURE_NO_WARNINGS     
++#define BUFFER_SIZE 80            
++#include "manipulating.h"        
++
++// Function to demonstrate string concatenation
++void manipulating(void) {
++    printf("*** Start of Concatenating Strings Demo ***\n");
++    // Declare buffer 
++    char string1[BUFFER_SIZE];    
++    char string2[BUFFER_SIZE];   
++
++    // Loop until user quits
++    do {
++        printf("Type the 1st string (q - to quit): \n");   
++        // Read first string from user input
++        fgets(string1, BUFFER_SIZE, stdin);    
++        // Remove newline character from input
++        string1[strlen(string1) - 1] = '\0';   
++
++        // If user does not enter "q", proceed with concatenation
++        if ((strcmp(string1, "q") != 0)) {
++            printf("Type the 2nd string: \n"); 
++            // Read second string from user input
++            fgets(string2, BUFFER_SIZE, stdin);    
++            // Remove newline character from input
++            string2[strlen(string2) - 1] = '\0';   
++            // Concatenate second string to first string safely
++            strcat_s(string1, BUFFER_SIZE, string2);
++            printf("Concatenated string is \'%s\'\n", string1);   
++        }
++    } while (strcmp(string1, "q") != 0);   // Continue loop until user enters "q"
++
++    printf("*** End of Concatenating strings Demo ***\n\n");   
++}
+diff --git a/manipulating.h b/manipulating.h
+new file mode 100644
+index 0000000..4c7ab15
+--- /dev/null
++++ b/manipulating.h
+@@ -0,0 +1,7 @@
++// MANIPULATING MODULE HEADER
++#ifndef _MANIPULATING_H_
++#define _MANIPULATING_H_
++#include <stdio.h>
++#include <string.h> 
++void manipulating (void);
++#endif
+\ No newline at end of file

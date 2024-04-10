@@ -1,0 +1,181 @@
+commit 470b2ca42d7744bcefd75e6cd1bb376f0a3756b0
+Author: Kiet Dung Truong <kdtruong@myseneca.ca>
+Date:   Tue Apr 9 16:46:33 2024 -0400
+
+    v2
+
+diff --git a/converting.c b/converting.c
+index b89680e..6c831bd 100644
+--- a/converting.c
++++ b/converting.c
+@@ -1,40 +1,31 @@
+ // CONVERTING MODULE SOURCE
+-/*
+-    This program demonstrates converting strings to integers.
+-    It prompts the user to enter numeric strings until 'q' is entered to quit.
+-    Each string entered is converted to an integer using the atoi function and displayed.
+-*/
+-
+-
+-// Define preprocessor directive to suppress warnings related to secure functions in Visual Studio
+-#define _CRT_SECURE_NO_WARNINGS
+-
+-// Define buffer size for storing user input
++#define CRT_SECURE_NO_WARNINGS
+ #define BUFFER_SIZE 80
+-
+-// Include header file for the converting functionality
+ #include "converting.h"
+-// V1
++
++// V2
++
+ void converting (void) {
+-    // print introduction to converting function
+-    printf ("*** Start of Converting Strings to int Demo ***\n");
+-    // buffer to store user input
+-    char intString[BUFFER_SIZE];
+-    int intNumber;
+-    // loop until user enters 'q' to quit
++    
++    printf ("*** Start of Converting Strings to double Demo ***\n");
++    char doubleString[BUFFER_SIZE];
++    double doubleNumber;
+     do {
+-        // prompt user to type a numeric string
+-        printf ("Type an int numeric string (q - to quit):\n");
+-        // get user input
+-        fgets(intString, BUFFER_SIZE, stdin);
+-        // remove newline character from the input
+-        intString [strlen(intString) - 1] = '\0';
+-        // if user doesn't enter 'q', convert the string to an integer and display
+-        if (strcmp(intString, "q") != 0) {
+-            intNumber = atoi(intString);
+-            printf ("Converted number is %d\n", intNumber);
++        // Prompts the user to enter a numeric string
++        printf ("Type the double numeric string (q - to quit):\n");
++        // Reads a line from the standard input into doubleString
++        fgets(doubleString, BUFFER_SIZE, stdin);
++        // Removes the newline character at the end of the string
++        doubleString [strlen(doubleString) - 1] = '\0';
++        // Checks if the entered string is not "q"
++        if ((strcmp(doubleString, "q") != 0)) {
++            // Converts the string to a double using atof() function
++            doubleNumber = atof (doubleString);
++            // Prints the converted double number
++            printf ("Converted number is %f\n", doubleNumber);
+         }
+-} while (strcmp(intString, "q") != 0);
+-printf("*** End of Converting Strings to int Demo ***\n\n");
++    } while (strcmp(doubleString, "q") != 0);// Loops until the entered string is "q"
++    //
++    printf("*** End of Converting Strings to double Demo ***\n\n");
+ 
+ }
+diff --git a/converting.h b/converting.h
+index c6f02e8..31848d2 100644
+--- a/converting.h
++++ b/converting.h
+@@ -1,18 +1,8 @@
+-/*
+-    This header file declares the converting function.
+-    It includes necessary header files for standard input/output, string manipulation, and memory allocation.
+-*/
+-
+ // CONVERTING MODULE HEADER
+-
+-#ifndef _CONVERTING_H_   // Header guard to prevent multiple inclusion
++#ifndef _CONVERTING_H_
+ #define _CONVERTING_H_
+-
+-#include <stdio.h>      // Standard input/output functions
+-#include <string.h>     // String manipulation functions
+-#include <stdlib.h>     // Memory allocation functions
+-
+-// Function prototype for the converting function
+-void converting(void);
+-
+-#endif  // End of header guard
++#include <stdio.h>
++#include <string.h> 
++#include <stdlib.h>
++void converting (void);
++#endif
+\ No newline at end of file
+
+commit e3518570be601f7af83e4a3bc8a9008fcb868b8b
+Author: Kiet Dung Truong <kdtruong@myseneca.ca>
+Date:   Tue Apr 9 16:45:25 2024 -0400
+
+    v1
+
+diff --git a/converting.c b/converting.c
+new file mode 100644
+index 0000000..b89680e
+--- /dev/null
++++ b/converting.c
+@@ -0,0 +1,40 @@
++// CONVERTING MODULE SOURCE
++/*
++    This program demonstrates converting strings to integers.
++    It prompts the user to enter numeric strings until 'q' is entered to quit.
++    Each string entered is converted to an integer using the atoi function and displayed.
++*/
++
++
++// Define preprocessor directive to suppress warnings related to secure functions in Visual Studio
++#define _CRT_SECURE_NO_WARNINGS
++
++// Define buffer size for storing user input
++#define BUFFER_SIZE 80
++
++// Include header file for the converting functionality
++#include "converting.h"
++// V1
++void converting (void) {
++    // print introduction to converting function
++    printf ("*** Start of Converting Strings to int Demo ***\n");
++    // buffer to store user input
++    char intString[BUFFER_SIZE];
++    int intNumber;
++    // loop until user enters 'q' to quit
++    do {
++        // prompt user to type a numeric string
++        printf ("Type an int numeric string (q - to quit):\n");
++        // get user input
++        fgets(intString, BUFFER_SIZE, stdin);
++        // remove newline character from the input
++        intString [strlen(intString) - 1] = '\0';
++        // if user doesn't enter 'q', convert the string to an integer and display
++        if (strcmp(intString, "q") != 0) {
++            intNumber = atoi(intString);
++            printf ("Converted number is %d\n", intNumber);
++        }
++} while (strcmp(intString, "q") != 0);
++printf("*** End of Converting Strings to int Demo ***\n\n");
++
++}
+diff --git a/converting.h b/converting.h
+new file mode 100644
+index 0000000..c6f02e8
+--- /dev/null
++++ b/converting.h
+@@ -0,0 +1,18 @@
++/*
++    This header file declares the converting function.
++    It includes necessary header files for standard input/output, string manipulation, and memory allocation.
++*/
++
++// CONVERTING MODULE HEADER
++
++#ifndef _CONVERTING_H_   // Header guard to prevent multiple inclusion
++#define _CONVERTING_H_
++
++#include <stdio.h>      // Standard input/output functions
++#include <string.h>     // String manipulation functions
++#include <stdlib.h>     // Memory allocation functions
++
++// Function prototype for the converting function
++void converting(void);
++
++#endif  // End of header guard

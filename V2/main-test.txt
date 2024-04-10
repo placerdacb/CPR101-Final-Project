@@ -1,0 +1,93 @@
+[?2004l
+1 - Fundamentals
+2 - Manipulation
+3 - Converting
+4 - Tokenizing
+0 - Exit
+Which module to run? 
+1
+*** Start of Strings Demo ***
+Type a string (q - to quit):
+testing
+The length of is 'testing' is 7 characters
+Type a string (q - to quit):
+string      2 strung   ing
+The length of is 'string' is 6 characters
+Type a string (q - to quit):
+moduke  le
+The length of is 'module' is 6 characters
+Type a string (q - to quit):
+q
+*** End of Measuring Strings Demo ***
+
+1 - Fundamentals
+2 - Manipulation
+3 - Converting
+4 - Tokenizing
+0 - Exit
+Which module to run? 
+2
+*** Start of Comparing Strings Demo ***
+Type the 1st string to compare (q - to quit): 
+testinff  g
+Type the 2nd string to compare: 
+st  manipulation
+'testing' string is greater than 'manipulation'
+Type the 1st string to compare (q - to quit): 
+ahiughsfusgf
+Type the 2nd string to compare: 
+auhfuishfieajf;aoisjkaon
+'ahiughsfusgf' string is less than 'auhfuishfieajf;aoisjkaon'
+Type the 1st string to compare (q - to quit): 
+3
+Type the 2nd string to compare: 
+hjhjd
+'3' string is less than 'hjhjd'
+Type the 1st string to compare (q - to quit): 
+q
+*** End of Comparing strings Demo ***
+
+1 - Fundamentals
+2 - Manipulation
+3 - Converting
+4 - Tokenizing
+0 - Exit
+Which module to run? 
+3
+*** Start of Converting Strings to double Demo ***
+Type the double numeric string (q - to quit):
+456.7382
+Converted number is 456.738200
+Type the double numeric string (q - to quit):
+65739.98
+Converted number is 65739.980000
+Type the double numeric string (q - to quit):
+q
+*** End of Converting Strings to double Demo ***
+
+1 - Fundamentals
+2 - Manipulation
+3 - Converting
+4 - Tokenizing
+0 - Exit
+Which module to run? 
+4
+*** Start of Tokenizing Words Demo ***
+Type a few words separated by space (q - to quit):
+testing tokenizing words demo
+Word #1 is 'testing'
+Word #2 is 'tokenizing'
+Word #3 is 'words'
+Word #4 is 'demo'
+Type a few words separated by space (q - to quit):
+testunf       q
+*** End of Tokenizing Words Demo ***
+
+1 - Fundamentals
+2 - Manipulation
+3 - Converting
+4 - Tokenizing
+0 - Exit
+Which module to run? 
+0
+
