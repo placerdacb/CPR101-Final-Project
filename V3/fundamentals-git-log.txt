@@ -1,0 +1,157 @@
+commit e0f116b1c6f34f8bfba9b5602495d784abf77987
+Author: Isaac <ysu83@myseneca.ca>
+Date:   Tue Apr 16 20:01:35 2024 -0400
+
+    v3
+
+diff --git a/fundamentals.c b/fundamentals.c
+index 7d3f52f..b65f8ff 100644
+--- a/fundamentals.c
++++ b/fundamentals.c
+@@ -8,28 +8,35 @@
+ // Include the header file
+ #include "fundamentals.h"
+ 
+-// V2
++// V3
+ // Function to demonstrate indexing strings
+-void fundamentals (void) {
+-// Print a message indicating the start of the demo
+-printf("*** Start of  Strings Demo ***\n");
+-// Declare variables
+-char buffer2[BUFFER_SIZE];
+-// Loop until the user decides to quit
+-do {
+-    // Prompt the user to type a non-empty string or 'q' to quit
+-    printf ("Type a string (q - to quit):\n");
+-    // Read input string from the user
+-    fgets (buffer2, BUFFER_SIZE, stdin);
+-    // Remove the newline character from the input string
+-    buffer2[strlen(buffer2) - 1] = '\0';
+-    // Check if the input string is not 'q'
+-    if (strcmp(buffer2, "q") != 0)
+-        // Print the character found at the specified position within the string
+-        printf ("The length of is \'%s\' is %d characters\n", buffer2, (int)strlen(buffer2));
+-// Continue looping until the user inputs 'q'
+-} while (strcmp(buffer2, "q") != 0);
+-// Print a message indicating the end of the demo
+-printf("*** End of Measuring Strings Demo ***\n\n");
+-
++void fundamentals(void) {
++    // Print a message indicating the start of the demo
++    printf("*** Start of Copying Strings Demo ***\n");
++    // Declare an array for the destination string
++    char destination[BUFFER_SIZE];
++    // Declare an array for the source string
++    char source[BUFFER_SIZE];
++    // Loop until the user enters 'q' to quit
++    do {
++        // Reset the first character of the destination string to '\0'
++        destination[0] = '\0';
++        // Print a message indicating that the destination string is reset to empty
++        printf("Destination string is reset to empty\n");
++        // Prompt the user to type a source string
++        printf("Type the source string (q - to quit) : \n");
++        // Read a line of input from the user into the source string
++        fgets(source, BUFFER_SIZE, stdin);
++        // Replace the newline character at the end of the input with '\0'
++        source[strlen(source) - 1] = '\0';
++        // Check if the user input is not 'q'
++        if (strcmp(source, "q") != 0) {
++            // Copy the contents of the source string to the destination string
++            strcpy(destination, source);
++            // Print the new destination string
++            printf("New destination string is \'%s\'\n", destination);
++        }
++    } while (strcmp(source, "q") != 0); // Continue the loop if the user input is not 'q'
++    // Print a message indicating the end of the demo
++    printf("*** End of Copying Strings Demo ***\n\n");
+ }
+diff --git a/fundamentals.h b/fundamentals.h
+index f1acb45..5f8bf4f 100644
+--- a/fundamentals.h
++++ b/fundamentals.h
+@@ -1,8 +1,13 @@
+ // FUNDAMENTALS MODULE HEADER
+-#ifndef _FUNDAMENTALS_H_
++
++#ifndef _FUNDAMENTALS_H_ // Header guard to prevent multiple inclusions
+ #define _FUNDAMENTALS_H_
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <string.h> 
+-void fundamentals (void);
+-#endif
+\ No newline at end of file
++
++#include <stdio.h>   // Include standard I/O functions
++#include <stdlib.h>  // Include standard library functions
++#include <string.h>  // Include string manipulation functions
++
++// Function declaration for the fundamentals function
++void fundamentals(void);
++
++#endif // End of header guard
+
+commit f5fe331edd3ba239a9cbe8b7d110709f7199edf9
+Author: Isaac <ysu83@myseneca.ca>
+Date:   Tue Apr 16 20:01:07 2024 -0400
+
+    v2
+
+diff --git a/fundamentals.c b/fundamentals.c
+new file mode 100644
+index 0000000..7d3f52f
+--- /dev/null
++++ b/fundamentals.c
+@@ -0,0 +1,35 @@
++// FUNDAMENTALS MODULE SOURCE
++// Preprocessor directive to suppress warnings related to certain functions
++#define CRT_SECURE_NO_WARNINGS
++// Define the buffer size for input strings
++#define BUFFER_SIZE 80
++// Define the size for input of numerical values
++#define NUM_INPUT_SIZE 10
++// Include the header file
++#include "fundamentals.h"
++
++// V2
++// Function to demonstrate indexing strings
++void fundamentals (void) {
++// Print a message indicating the start of the demo
++printf("*** Start of  Strings Demo ***\n");
++// Declare variables
++char buffer2[BUFFER_SIZE];
++// Loop until the user decides to quit
++do {
++    // Prompt the user to type a non-empty string or 'q' to quit
++    printf ("Type a string (q - to quit):\n");
++    // Read input string from the user
++    fgets (buffer2, BUFFER_SIZE, stdin);
++    // Remove the newline character from the input string
++    buffer2[strlen(buffer2) - 1] = '\0';
++    // Check if the input string is not 'q'
++    if (strcmp(buffer2, "q") != 0)
++        // Print the character found at the specified position within the string
++        printf ("The length of is \'%s\' is %d characters\n", buffer2, (int)strlen(buffer2));
++// Continue looping until the user inputs 'q'
++} while (strcmp(buffer2, "q") != 0);
++// Print a message indicating the end of the demo
++printf("*** End of Measuring Strings Demo ***\n\n");
++
++}
+diff --git a/fundamentals.h b/fundamentals.h
+new file mode 100644
+index 0000000..f1acb45
+--- /dev/null
++++ b/fundamentals.h
+@@ -0,0 +1,8 @@
++// FUNDAMENTALS MODULE HEADER
++#ifndef _FUNDAMENTALS_H_
++#define _FUNDAMENTALS_H_
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h> 
++void fundamentals (void);
++#endif
+\ No newline at end of file

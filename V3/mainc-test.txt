@@ -1,0 +1,86 @@
+[?2004l
+1 - Fundamentals
+2 - Manipulation
+3 - Converting
+4 - Tokenizing
+0 - Exit
+Which module to run? 
+1
+*** Start of Copying Strings Demo ***
+Destination string is reset to empty
+Type the source string (q - to quit) : 
+funa damentals
+New destination string is 'fundamentals'
+Destination string is reset to empty
+Type the source string (q - to quit) : 
+testu ing
+New destination string is 'testing'
+Destination string is reset to empty
+Type the source string (q - to quit) : 
+q
+*** End of Copying Strings Demo ***
+
+1 - Fundamentals
+2 - Manipulation
+3 - Converting
+4 - Tokenizing
+0 - Exit
+Which module to run? 
+2
+*** Start of Searching Strings Demo ***
+Type the string (q - to quit):
+manipulation
+Type the substring: 
+p
+'p' found at 4 position
+Type the string (q - to quit):
+testing
+Type the substring: 
+n
+'n' found at 5 position
+Type the string (q - to quit):
+q
+*** End of Searching Strings Demo ***
+
+1 - Fundamentals
+2 - Manipulation
+3 - Converting
+4 - Tokenizing
+0 - Exit
+Which module to run?
+3
+*** Start of Converting Strings to long Demo ***
+Type the long numeric string (q - to quit) :
+23490873
+Converted number is 23490873
+Type the long numeric string (q - to quit) :
+5834753465728732
+Converted number is 5834753465728732
+Type the long numeric string (q - to quit) :
+q
+*** End of Converting Strings to long Demo ***
+
+1 - Fundamentals
+2 - Manipulation
+3 - Converting
+4 - Tokenizing
+0 - Exit
+Which module to run? 
+4
+*** Start of Tokenizing Sentences Demo ***
+Type a few sentences separated by dot (q - to quit) :
+testing.tokenizing.module
+Sentence #1 is 'testing'
+Sentence #2 is 'tokenizing'
+Sentence #3 is 'module'
+Type a few sentences separated by dot (q - to quit) :
+q
+*** End of Tokenizing Sentences Demo ***
+
+1 - Fundamentals
+2 - Manipulation
+3 - Converting
+4 - Tokenizing
+0 - Exit
+Which module to run? 
+0

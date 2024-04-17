@@ -1,0 +1,382 @@
+commit bd215f5cc29facbead3a6308933952f0cd33c910
+Author: Kiet Dung Truong <Kiet Dung Truong>
+Date:   Tue Apr 16 18:43:17 2024 -0400
+
+    v3
+
+diff --git a/converting.c b/converting.c
+index 6c831bd..af68984 100644
+--- a/converting.c
++++ b/converting.c
+@@ -1,31 +1,45 @@
+ // CONVERTING MODULE SOURCE
++
++// Disabling secure warnings
+ #define CRT_SECURE_NO_WARNINGS
++
++// Defining buffer size for input
+ #define BUFFER_SIZE 80
++
++// Including header file for the converting module
+ #include "converting.h"
+ 
+-// V2
++// V3
+ 
+-void converting (void) {
++// Function to convert strings to long
++void converting(void) {
++    // Print start message
++    printf("*** Start of Converting Strings to long Demo ***\n");
+     
+-    printf ("*** Start of Converting Strings to double Demo ***\n");
+-    char doubleString[BUFFER_SIZE];
+-    double doubleNumber;
++    char longString[BUFFER_SIZE]; // Buffer to store input string
++    long longNumber; // Variable to store converted long number
++    
++    // Start of do-while loop to repeatedly prompt for input
+     do {
+-        // Prompts the user to enter a numeric string
+-        printf ("Type the double numeric string (q - to quit):\n");
+-        // Reads a line from the standard input into doubleString
+-        fgets(doubleString, BUFFER_SIZE, stdin);
+-        // Removes the newline character at the end of the string
+-        doubleString [strlen(doubleString) - 1] = '\0';
+-        // Checks if the entered string is not "q"
+-        if ((strcmp(doubleString, "q") != 0)) {
+-            // Converts the string to a double using atof() function
+-            doubleNumber = atof (doubleString);
+-            // Prints the converted double number
+-            printf ("Converted number is %f\n", doubleNumber);
++        // Prompt for input
++        printf("Type the long numeric string (q - to quit):\n");
++        
++        // Read input from user
++        fgets(longString, BUFFER_SIZE, stdin);
++        
++        // Remove newline character from input
++        longString[strlen(longString) - 1] = '\0';
++        
++        // Check if input is not 'q'
++        if (strcmp(longString, "q") != 0) {
++            // Convert string to long
++            longNumber = atol(longString);
++            
++            // Print converted number
++            printf("Converted number is %ld\n", longNumber);
+         }
+-    } while (strcmp(doubleString, "q") != 0);// Loops until the entered string is "q"
+-    //
+-    printf("*** End of Converting Strings to double Demo ***\n\n");
+-
++    } while (strcmp(longString, "q") != 0); // Continue loop until input is 'q'
++    
++    // Print end message
++    printf("*** End of Converting Strings to long Demo ***\n\n");
+ }
+diff --git a/converting.h b/converting.h
+index 31848d2..c6f02e8 100644
+--- a/converting.h
++++ b/converting.h
+@@ -1,8 +1,18 @@
++/*
++    This header file declares the converting function.
++    It includes necessary header files for standard input/output, string manipulation, and memory allocation.
++*/
++
+ // CONVERTING MODULE HEADER
+-#ifndef _CONVERTING_H_
++
++#ifndef _CONVERTING_H_   // Header guard to prevent multiple inclusion
+ #define _CONVERTING_H_
+-#include <stdio.h>
+-#include <string.h> 
+-#include <stdlib.h>
+-void converting (void);
+-#endif
+\ No newline at end of file
++
++#include <stdio.h>      // Standard input/output functions
++#include <string.h>     // String manipulation functions
++#include <stdlib.h>     // Memory allocation functions
++
++// Function prototype for the converting function
++void converting(void);
++
++#endif  // End of header guard
+
+commit d3d8ca01eb58f6ef8238a68fd3fe7784ef919d78
+Author: Kiet Dung Truong <Kiet Dung Truong>
+Date:   Tue Apr 16 18:42:42 2024 -0400
+
+    v2
+
+diff --git a/converting.c b/converting.c
+index af68984..6c831bd 100644
+--- a/converting.c
++++ b/converting.c
+@@ -1,45 +1,31 @@
+ // CONVERTING MODULE SOURCE
+-
+-// Disabling secure warnings
+ #define CRT_SECURE_NO_WARNINGS
+-
+-// Defining buffer size for input
+ #define BUFFER_SIZE 80
+-
+-// Including header file for the converting module
+ #include "converting.h"
+ 
+-// V3
++// V2
+ 
+-// Function to convert strings to long
+-void converting(void) {
+-    // Print start message
+-    printf("*** Start of Converting Strings to long Demo ***\n");
++void converting (void) {
+     
+-    char longString[BUFFER_SIZE]; // Buffer to store input string
+-    long longNumber; // Variable to store converted long number
+-    
+-    // Start of do-while loop to repeatedly prompt for input
++    printf ("*** Start of Converting Strings to double Demo ***\n");
++    char doubleString[BUFFER_SIZE];
++    double doubleNumber;
+     do {
+-        // Prompt for input
+-        printf("Type the long numeric string (q - to quit):\n");
+-        
+-        // Read input from user
+-        fgets(longString, BUFFER_SIZE, stdin);
+-        
+-        // Remove newline character from input
+-        longString[strlen(longString) - 1] = '\0';
+-        
+-        // Check if input is not 'q'
+-        if (strcmp(longString, "q") != 0) {
+-            // Convert string to long
+-            longNumber = atol(longString);
+-            
+-            // Print converted number
+-            printf("Converted number is %ld\n", longNumber);
++        // Prompts the user to enter a numeric string
++        printf ("Type the double numeric string (q - to quit):\n");
++        // Reads a line from the standard input into doubleString
++        fgets(doubleString, BUFFER_SIZE, stdin);
++        // Removes the newline character at the end of the string
++        doubleString [strlen(doubleString) - 1] = '\0';
++        // Checks if the entered string is not "q"
++        if ((strcmp(doubleString, "q") != 0)) {
++            // Converts the string to a double using atof() function
++            doubleNumber = atof (doubleString);
++            // Prints the converted double number
++            printf ("Converted number is %f\n", doubleNumber);
+         }
+-    } while (strcmp(longString, "q") != 0); // Continue loop until input is 'q'
+-    
+-    // Print end message
+-    printf("*** End of Converting Strings to long Demo ***\n\n");
++    } while (strcmp(doubleString, "q") != 0);// Loops until the entered string is "q"
++    //
++    printf("*** End of Converting Strings to double Demo ***\n\n");
++
+ }
+diff --git a/converting.h b/converting.h
+index c6f02e8..31848d2 100644
+--- a/converting.h
++++ b/converting.h
+@@ -1,18 +1,8 @@
+-/*
+-    This header file declares the converting function.
+-    It includes necessary header files for standard input/output, string manipulation, and memory allocation.
+-*/
+-
+ // CONVERTING MODULE HEADER
+-
+-#ifndef _CONVERTING_H_   // Header guard to prevent multiple inclusion
++#ifndef _CONVERTING_H_
+ #define _CONVERTING_H_
+-
+-#include <stdio.h>      // Standard input/output functions
+-#include <string.h>     // String manipulation functions
+-#include <stdlib.h>     // Memory allocation functions
+-
+-// Function prototype for the converting function
+-void converting(void);
+-
+-#endif  // End of header guard
++#include <stdio.h>
++#include <string.h> 
++#include <stdlib.h>
++void converting (void);
++#endif
+\ No newline at end of file
+
+commit 100597c8e25f95bcc289aa50dd392c121005579a
+Author: Kiet Dung Truong <kdtruong@myseneca.ca>
+Date:   Tue Apr 16 18:22:55 2024 -0400
+
+    v3
+
+diff --git a/converting.c b/converting.c
+index 6c831bd..af68984 100644
+--- a/converting.c
++++ b/converting.c
+@@ -1,31 +1,45 @@
+ // CONVERTING MODULE SOURCE
++
++// Disabling secure warnings
+ #define CRT_SECURE_NO_WARNINGS
++
++// Defining buffer size for input
+ #define BUFFER_SIZE 80
++
++// Including header file for the converting module
+ #include "converting.h"
+ 
+-// V2
++// V3
+ 
+-void converting (void) {
++// Function to convert strings to long
++void converting(void) {
++    // Print start message
++    printf("*** Start of Converting Strings to long Demo ***\n");
+     
+-    printf ("*** Start of Converting Strings to double Demo ***\n");
+-    char doubleString[BUFFER_SIZE];
+-    double doubleNumber;
++    char longString[BUFFER_SIZE]; // Buffer to store input string
++    long longNumber; // Variable to store converted long number
++    
++    // Start of do-while loop to repeatedly prompt for input
+     do {
+-        // Prompts the user to enter a numeric string
+-        printf ("Type the double numeric string (q - to quit):\n");
+-        // Reads a line from the standard input into doubleString
+-        fgets(doubleString, BUFFER_SIZE, stdin);
+-        // Removes the newline character at the end of the string
+-        doubleString [strlen(doubleString) - 1] = '\0';
+-        // Checks if the entered string is not "q"
+-        if ((strcmp(doubleString, "q") != 0)) {
+-            // Converts the string to a double using atof() function
+-            doubleNumber = atof (doubleString);
+-            // Prints the converted double number
+-            printf ("Converted number is %f\n", doubleNumber);
++        // Prompt for input
++        printf("Type the long numeric string (q - to quit):\n");
++        
++        // Read input from user
++        fgets(longString, BUFFER_SIZE, stdin);
++        
++        // Remove newline character from input
++        longString[strlen(longString) - 1] = '\0';
++        
++        // Check if input is not 'q'
++        if (strcmp(longString, "q") != 0) {
++            // Convert string to long
++            longNumber = atol(longString);
++            
++            // Print converted number
++            printf("Converted number is %ld\n", longNumber);
+         }
+-    } while (strcmp(doubleString, "q") != 0);// Loops until the entered string is "q"
+-    //
+-    printf("*** End of Converting Strings to double Demo ***\n\n");
+-
++    } while (strcmp(longString, "q") != 0); // Continue loop until input is 'q'
++    
++    // Print end message
++    printf("*** End of Converting Strings to long Demo ***\n\n");
+ }
+diff --git a/converting.h b/converting.h
+index 31848d2..c6f02e8 100644
+--- a/converting.h
++++ b/converting.h
+@@ -1,8 +1,18 @@
++/*
++    This header file declares the converting function.
++    It includes necessary header files for standard input/output, string manipulation, and memory allocation.
++*/
++
+ // CONVERTING MODULE HEADER
+-#ifndef _CONVERTING_H_
++
++#ifndef _CONVERTING_H_   // Header guard to prevent multiple inclusion
+ #define _CONVERTING_H_
+-#include <stdio.h>
+-#include <string.h> 
+-#include <stdlib.h>
+-void converting (void);
+-#endif
+\ No newline at end of file
++
++#include <stdio.h>      // Standard input/output functions
++#include <string.h>     // String manipulation functions
++#include <stdlib.h>     // Memory allocation functions
++
++// Function prototype for the converting function
++void converting(void);
++
++#endif  // End of header guard
+
+commit 957eb35b879e83d6d74a59c8ae5a99fbeb57846a
+Author: Kiet Dung Truong <kdtruong@myseneca.ca>
+Date:   Tue Apr 16 18:13:04 2024 -0400
+
+    v1
+
+diff --git a/converting.c b/converting.c
+new file mode 100644
+index 0000000..6c831bd
+--- /dev/null
++++ b/converting.c
+@@ -0,0 +1,31 @@
++// CONVERTING MODULE SOURCE
++#define CRT_SECURE_NO_WARNINGS
++#define BUFFER_SIZE 80
++#include "converting.h"
++
++// V2
++
++void converting (void) {
++    
++    printf ("*** Start of Converting Strings to double Demo ***\n");
++    char doubleString[BUFFER_SIZE];
++    double doubleNumber;
++    do {
++        // Prompts the user to enter a numeric string
++        printf ("Type the double numeric string (q - to quit):\n");
++        // Reads a line from the standard input into doubleString
++        fgets(doubleString, BUFFER_SIZE, stdin);
++        // Removes the newline character at the end of the string
++        doubleString [strlen(doubleString) - 1] = '\0';
++        // Checks if the entered string is not "q"
++        if ((strcmp(doubleString, "q") != 0)) {
++            // Converts the string to a double using atof() function
++            doubleNumber = atof (doubleString);
++            // Prints the converted double number
++            printf ("Converted number is %f\n", doubleNumber);
++        }
++    } while (strcmp(doubleString, "q") != 0);// Loops until the entered string is "q"
++    //
++    printf("*** End of Converting Strings to double Demo ***\n\n");
++
++}
+diff --git a/converting.h b/converting.h
+new file mode 100644
+index 0000000..31848d2
+--- /dev/null
++++ b/converting.h
+@@ -0,0 +1,8 @@
++// CONVERTING MODULE HEADER
++#ifndef _CONVERTING_H_
++#define _CONVERTING_H_
++#include <stdio.h>
++#include <string.h> 
++#include <stdlib.h>
++void converting (void);
++#endif
+\ No newline at end of file

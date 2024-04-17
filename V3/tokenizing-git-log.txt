@@ -1,0 +1,235 @@
+commit 119b6937d769456e4813f19b811ee69f3d752081
+Author: Isaac <ysu83@myseneca.ca>
+Date:   Tue Apr 16 22:23:53 2024 -0400
+
+    v3
+
+diff --git a/tokenizing.c b/tokenizing.c
+index 5393b26..a21d229 100644
+--- a/tokenizing.c
++++ b/tokenizing.c
+@@ -10,62 +10,55 @@
+ #include "tokenizing.h"
+ // This line includes the header file "tokenizing.h", which likely contains declarations or definitions needed for this implementation.
+ 
+-// V1
+-// This is likely a version marker or a comment indicating the start of version 1 of this code.
++// V3
++// This is likely a version marker or a comment indicating the start of version 3 of this code.
+ 
+ void tokenizing(void) {
+-// This line defines the function "tokenizing" which takes no arguments and returns void.
+-
+-    printf("*** Start of Tokenizing Words Demo ***\n");
+-    // This line prints a message indicating the start of the tokenizing words demo.
+-
+-    char words[BUFFER_SIZE];
+-    // This line declares an array named "words" of type char with size BUFFER_SIZE, used to store user input.
+-
+-    char* nextWord = NULL;
+-    // This line declares a char pointer "nextWord" and initializes it to NULL.
+-
+-    int wordsCounter;
+-    // This line declares an integer variable "wordsCounter" without initialization.
+-
++    printf("*** Start of Tokenizing Sentences Demo ***\n");
++    // Print a message indicating the start of the tokenizing sentences demo.
++    
++    char sentences[BUFFER_SIZE];
++    // Declare a character array named "sentences" with a size of BUFFER_SIZE (300).
++    
++    char* nextSentence = NULL;
++    // Declare a character pointer named "nextSentence" and initialize it to NULL.
++    
++    int sentencesCounter;
++    // Declare an integer variable named "sentencesCounter".
++    
+     do {
+-    // This line starts a do-while loop. It will execute at least once and will continue to execute as long as the condition in the while statement evaluates to true.
+-
+-        printf("Type a few words separated by space (q - to quit):\n");
+-        // This line prints a message prompting the user to type words.
+-
+-        fgets(words, BUFFER_SIZE, stdin);
+-        // This line reads input from the standard input (stdin) and stores it in the "words" array, up to a maximum of BUFFER_SIZE characters.
+-
+-        words[strlen(words) - 1] = '\0';
+-        // This line removes the trailing newline character from the input string by replacing it with a null terminator, effectively trimming the newline character.
+-
+-        if (strcmp(words, "q") != 0) {
+-        // This line checks if the input string is not equal to "q".
+-
+-            nextWord = strtok(words, " ");
+-            // This line tokenizes the input string into words using space (" ") as the delimiter and assigns the pointer to the first token to "nextWord".
+-
+-            wordsCounter = 1;
+-            // This line initializes the wordsCounter to 1.
+-
+-            while (nextWord) {
+-            // This line starts a while loop which iterates as long as "nextWord" is not NULL.
+-
+-                printf("Word #%d is \'%s\'\n", wordsCounter++, nextWord);
+-                // This line prints each tokenized word along with its count.
+-
+-                nextWord = strtok(NULL, " ");
+-                // This line continues tokenizing the input string from where it left off, searching for subsequent tokens.
+-
++        printf ("Type a few sentences separated by dot (q - to quit) :\n");
++        // Print a message prompting the user to type sentences separated by dots.
++        
++        fgets (sentences, BUFFER_SIZE, stdin);
++        // Read a line of input from the standard input (stdin) and store it in the "sentences" array.
++        
++        sentences [strlen(sentences) - 1] = '\0';
++        // Replace the newline character at the end of the input with a null terminator to remove it.
++        
++        if ((strcmp (sentences, "q") != 0)) {
++            // If the input is not "q" (to quit), execute the following block of code.
++            
++            nextSentence = strtok (sentences, ".");
++            // Tokenize the input string using the delimiter "." and store the result in "nextSentence".
++            
++            sentencesCounter = 1;
++            // Initialize the sentencesCounter to 1.
++            
++            while (nextSentence) {
++                // Iterate over each tokenized sentence until nextSentence becomes NULL.
++                
++                printf ("Sentence #%d is \'%s\'\n", sentencesCounter++, nextSentence);
++                // Print the sentence number and the tokenized sentence.
++                
++                nextSentence = strtok (NULL, ".");
++                // Tokenize the next sentence using the same delimiter ".".
+             }
+         }
+-
+-    } while (strcmp(words, "q") != 0);
+-    // This line checks if the input string is not equal to "q", if true, the loop continues; otherwise, it exits.
+-
+-    printf("*** End of Tokenizing Words Demo ***\n\n");
+-    // This line prints a message indicating the end of the tokenizing words demo.
+-
++    } while (strcmp (sentences, "q") != 0);
++    // Continue looping until the input is "q" (to quit).
++    
++    printf("*** End of Tokenizing Sentences Demo ***\n\n");
++    // Print a message indicating the end of the tokenizing sentences demo.
+ }
+-// This line marks the end of the "tokenizing" function.
++
+diff --git a/tokenizing.h b/tokenizing.h
+index 0599f01..1acbe30 100644
+--- a/tokenizing.h
++++ b/tokenizing.h
+@@ -1,7 +1,7 @@
+-// TOKENIZING MODULE HEADER 
++// TOKENIZING MODULE HEADER
++// This line is a comment indicating that this file is the header file for the tokenizing module.
++
+ #ifndef _TOKENIZING_H_
++// This line is a preprocessor directive that checks whether the macro _TOKENIZING_H_ is not already defined.
+ #define _TOKENIZING_H_
+-#include <stdio.h>
+-#include <string.h> 
+-void tokenizing (void);
+-#endif
+\ No newline at end of file
++// If the macro _TOKENIZING_H_ is not
+
+commit 7078ba17fefcb15d34b928e73c43dd62f5b3a1c8
+Author: Isaac <ysu83@myseneca.ca>
+Date:   Tue Apr 16 22:23:21 2024 -0400
+
+    v2
+
+diff --git a/tokenizing.c b/tokenizing.c
+new file mode 100644
+index 0000000..5393b26
+--- /dev/null
++++ b/tokenizing.c
+@@ -0,0 +1,71 @@
++// TOKENIZING MODULE SOURCE
++// This line indicates that this file contains the implementation of a tokenizing module.
++
++#define _CRT_SECURE_NO_WARNINGS
++// This line is a preprocessor directive to define a macro "_CRT_SECURE_NO_WARNINGS" which suppresses warnings related to certain secure functions in the CRT (C Run-Time) library.
++
++#define BUFFER_SIZE 300
++// This line defines a macro BUFFER_SIZE with a value of 300, indicating the size of the buffer used to store words.
++
++#include "tokenizing.h"
++// This line includes the header file "tokenizing.h", which likely contains declarations or definitions needed for this implementation.
++
++// V1
++// This is likely a version marker or a comment indicating the start of version 1 of this code.
++
++void tokenizing(void) {
++// This line defines the function "tokenizing" which takes no arguments and returns void.
++
++    printf("*** Start of Tokenizing Words Demo ***\n");
++    // This line prints a message indicating the start of the tokenizing words demo.
++
++    char words[BUFFER_SIZE];
++    // This line declares an array named "words" of type char with size BUFFER_SIZE, used to store user input.
++
++    char* nextWord = NULL;
++    // This line declares a char pointer "nextWord" and initializes it to NULL.
++
++    int wordsCounter;
++    // This line declares an integer variable "wordsCounter" without initialization.
++
++    do {
++    // This line starts a do-while loop. It will execute at least once and will continue to execute as long as the condition in the while statement evaluates to true.
++
++        printf("Type a few words separated by space (q - to quit):\n");
++        // This line prints a message prompting the user to type words.
++
++        fgets(words, BUFFER_SIZE, stdin);
++        // This line reads input from the standard input (stdin) and stores it in the "words" array, up to a maximum of BUFFER_SIZE characters.
++
++        words[strlen(words) - 1] = '\0';
++        // This line removes the trailing newline character from the input string by replacing it with a null terminator, effectively trimming the newline character.
++
++        if (strcmp(words, "q") != 0) {
++        // This line checks if the input string is not equal to "q".
++
++            nextWord = strtok(words, " ");
++            // This line tokenizes the input string into words using space (" ") as the delimiter and assigns the pointer to the first token to "nextWord".
++
++            wordsCounter = 1;
++            // This line initializes the wordsCounter to 1.
++
++            while (nextWord) {
++            // This line starts a while loop which iterates as long as "nextWord" is not NULL.
++
++                printf("Word #%d is \'%s\'\n", wordsCounter++, nextWord);
++                // This line prints each tokenized word along with its count.
++
++                nextWord = strtok(NULL, " ");
++                // This line continues tokenizing the input string from where it left off, searching for subsequent tokens.
++
++            }
++        }
++
++    } while (strcmp(words, "q") != 0);
++    // This line checks if the input string is not equal to "q", if true, the loop continues; otherwise, it exits.
++
++    printf("*** End of Tokenizing Words Demo ***\n\n");
++    // This line prints a message indicating the end of the tokenizing words demo.
++
++}
++// This line marks the end of the "tokenizing" function.
+diff --git a/tokenizing.h b/tokenizing.h
+new file mode 100644
+index 0000000..0599f01
+--- /dev/null
++++ b/tokenizing.h
+@@ -0,0 +1,7 @@
++// TOKENIZING MODULE HEADER 
++#ifndef _TOKENIZING_H_
++#define _TOKENIZING_H_
++#include <stdio.h>
++#include <string.h> 
++void tokenizing (void);
++#endif
+\ No newline at end of file

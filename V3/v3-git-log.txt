@@ -1,0 +1,1724 @@
+commit b03afb59b9c4d7ca5759d87352168f750a849c4e
+Author: Priscilla Lacerda <placerda-cavalcante@myseneca.ca>
+Date:   Tue Apr 16 21:37:53 2024 -0400
+
+    v3
+
+diff --git a/converting.h b/converting.h
+new file mode 100644
+index 0000000..c6f02e8
+--- /dev/null
++++ b/converting.h
+@@ -0,0 +1,18 @@
++/*
++    This header file declares the converting function.
++    It includes necessary header files for standard input/output, string manipulation, and memory allocation.
++*/
++
++// CONVERTING MODULE HEADER
++
++#ifndef _CONVERTING_H_   // Header guard to prevent multiple inclusion
++#define _CONVERTING_H_
++
++#include <stdio.h>      // Standard input/output functions
++#include <string.h>     // String manipulation functions
++#include <stdlib.h>     // Memory allocation functions
++
++// Function prototype for the converting function
++void converting(void);
++
++#endif  // End of header guard
+diff --git a/converting_screenshot_v2.png b/converting_screenshot_v2.png
+new file mode 100644
+index 0000000..10f52db
+Binary files /dev/null and b/converting_screenshot_v2.png differ
+diff --git a/coverting-git-log.txt b/coverting-git-log.txt
+new file mode 100644
+index 0000000..aa29624
+--- /dev/null
++++ b/coverting-git-log.txt
+@@ -0,0 +1,181 @@
++commit 470b2ca42d7744bcefd75e6cd1bb376f0a3756b0
++Author: Kiet Dung Truong <kdtruong@myseneca.ca>
++Date:   Tue Apr 9 16:46:33 2024 -0400
++
++    v2
++
++diff --git a/converting.c b/converting.c
++index b89680e..6c831bd 100644
++--- a/converting.c
+++++ b/converting.c
++@@ -1,40 +1,31 @@
++ // CONVERTING MODULE SOURCE
++-/*
++-    This program demonstrates converting strings to integers.
++-    It prompts the user to enter numeric strings until 'q' is entered to quit.
++-    Each string entered is converted to an integer using the atoi function and displayed.
++-*/
++-
++-
++-// Define preprocessor directive to suppress warnings related to secure functions in Visual Studio
++-#define _CRT_SECURE_NO_WARNINGS
++-
++-// Define buffer size for storing user input
+++#define CRT_SECURE_NO_WARNINGS
++ #define BUFFER_SIZE 80
++-
++-// Include header file for the converting functionality
++ #include "converting.h"
++-// V1
+++
+++// V2
+++
++ void converting (void) {
++-    // print introduction to converting function
++-    printf ("*** Start of Converting Strings to int Demo ***\n");
++-    // buffer to store user input
++-    char intString[BUFFER_SIZE];
++-    int intNumber;
++-    // loop until user enters 'q' to quit
+++    
+++    printf ("*** Start of Converting Strings to double Demo ***\n");
+++    char doubleString[BUFFER_SIZE];
+++    double doubleNumber;
++     do {
++-        // prompt user to type a numeric string
++-        printf ("Type an int numeric string (q - to quit):\n");
++-        // get user input
++-        fgets(intString, BUFFER_SIZE, stdin);
++-        // remove newline character from the input
++-        intString [strlen(intString) - 1] = '\0';
++-        // if user doesn't enter 'q', convert the string to an integer and display
++-        if (strcmp(intString, "q") != 0) {
++-            intNumber = atoi(intString);
++-            printf ("Converted number is %d\n", intNumber);
+++        // Prompts the user to enter a numeric string
+++        printf ("Type the double numeric string (q - to quit):\n");
+++        // Reads a line from the standard input into doubleString
+++        fgets(doubleString, BUFFER_SIZE, stdin);
+++        // Removes the newline character at the end of the string
+++        doubleString [strlen(doubleString) - 1] = '\0';
+++        // Checks if the entered string is not "q"
+++        if ((strcmp(doubleString, "q") != 0)) {
+++            // Converts the string to a double using atof() function
+++            doubleNumber = atof (doubleString);
+++            // Prints the converted double number
+++            printf ("Converted number is %f\n", doubleNumber);
++         }
++-} while (strcmp(intString, "q") != 0);
++-printf("*** End of Converting Strings to int Demo ***\n\n");
+++    } while (strcmp(doubleString, "q") != 0);// Loops until the entered string is "q"
+++    //
+++    printf("*** End of Converting Strings to double Demo ***\n\n");
++ 
++ }
++diff --git a/converting.h b/converting.h
++index c6f02e8..31848d2 100644
++--- a/converting.h
+++++ b/converting.h
++@@ -1,18 +1,8 @@
++-/*
++-    This header file declares the converting function.
++-    It includes necessary header files for standard input/output, string manipulation, and memory allocation.
++-*/
++-
++ // CONVERTING MODULE HEADER
++-
++-#ifndef _CONVERTING_H_   // Header guard to prevent multiple inclusion
+++#ifndef _CONVERTING_H_
++ #define _CONVERTING_H_
++-
++-#include <stdio.h>      // Standard input/output functions
++-#include <string.h>     // String manipulation functions
++-#include <stdlib.h>     // Memory allocation functions
++-
++-// Function prototype for the converting function
++-void converting(void);
++-
++-#endif  // End of header guard
+++#include <stdio.h>
+++#include <string.h> 
+++#include <stdlib.h>
+++void converting (void);
+++#endif
++\ No newline at end of file
++
++commit e3518570be601f7af83e4a3bc8a9008fcb868b8b
++Author: Kiet Dung Truong <kdtruong@myseneca.ca>
++Date:   Tue Apr 9 16:45:25 2024 -0400
++
++    v1
++
++diff --git a/converting.c b/converting.c
++new file mode 100644
++index 0000000..b89680e
++--- /dev/null
+++++ b/converting.c
++@@ -0,0 +1,40 @@
+++// CONVERTING MODULE SOURCE
+++/*
+++    This program demonstrates converting strings to integers.
+++    It prompts the user to enter numeric strings until 'q' is entered to quit.
+++    Each string entered is converted to an integer using the atoi function and displayed.
+++*/
+++
+++
+++// Define preprocessor directive to suppress warnings related to secure functions in Visual Studio
+++#define _CRT_SECURE_NO_WARNINGS
+++
+++// Define buffer size for storing user input
+++#define BUFFER_SIZE 80
+++
+++// Include header file for the converting functionality
+++#include "converting.h"
+++// V1
+++void converting (void) {
+++    // print introduction to converting function
+++    printf ("*** Start of Converting Strings to int Demo ***\n");
+++    // buffer to store user input
+++    char intString[BUFFER_SIZE];
+++    int intNumber;
+++    // loop until user enters 'q' to quit
+++    do {
+++        // prompt user to type a numeric string
+++        printf ("Type an int numeric string (q - to quit):\n");
+++        // get user input
+++        fgets(intString, BUFFER_SIZE, stdin);
+++        // remove newline character from the input
+++        intString [strlen(intString) - 1] = '\0';
+++        // if user doesn't enter 'q', convert the string to an integer and display
+++        if (strcmp(intString, "q") != 0) {
+++            intNumber = atoi(intString);
+++            printf ("Converted number is %d\n", intNumber);
+++        }
+++} while (strcmp(intString, "q") != 0);
+++printf("*** End of Converting Strings to int Demo ***\n\n");
+++
+++}
++diff --git a/converting.h b/converting.h
++new file mode 100644
++index 0000000..c6f02e8
++--- /dev/null
+++++ b/converting.h
++@@ -0,0 +1,18 @@
+++/*
+++    This header file declares the converting function.
+++    It includes necessary header files for standard input/output, string manipulation, and memory allocation.
+++*/
+++
+++// CONVERTING MODULE HEADER
+++
+++#ifndef _CONVERTING_H_   // Header guard to prevent multiple inclusion
+++#define _CONVERTING_H_
+++
+++#include <stdio.h>      // Standard input/output functions
+++#include <string.h>     // String manipulation functions
+++#include <stdlib.h>     // Memory allocation functions
+++
+++// Function prototype for the converting function
+++void converting(void);
+++
+++#endif  // End of header guard
+diff --git a/fundamentals-git-log.txt b/fundamentals-git-log.txt
+new file mode 100644
+index 0000000..9a604cf
+--- /dev/null
++++ b/fundamentals-git-log.txt
+@@ -0,0 +1,614 @@
++commit 4e6ca52570f2083aaeee9060bf675675f102c449
++Author: Isaac <ysu83@myseneca.ca>
++Date:   Mon Apr 8 01:18:34 2024 -0400
++
++    v2
++
++diff --git a/fundamentals.c b/fundamentals.c
++index d4eb00a..7d3f52f 100644
++--- a/fundamentals.c
+++++ b/fundamentals.c
++@@ -8,48 +8,28 @@
++ // Include the header file
++ #include "fundamentals.h"
++ 
+++// V2
++ // Function to demonstrate indexing strings
++ void fundamentals (void) {
++-
++-// V1
++ // Print a message indicating the start of the demo
++-printf("*** Start of Indexing Strings Demo ***\n");
+++printf("*** Start of  Strings Demo ***\n");
++ // Declare variables
++-char buffer1[BUFFER_SIZE];
++-char numInput[NUM_INPUT_SIZE];
++-size_t position;
+++char buffer2[BUFFER_SIZE];
++ // Loop until the user decides to quit
++ do {
++     // Prompt the user to type a non-empty string or 'q' to quit
++-    printf ("Type not empty string (q - to quit):\n");
+++    printf ("Type a string (q - to quit):\n");
++     // Read input string from the user
++-    fgets (buffer1, BUFFER_SIZE, stdin);
+++    fgets (buffer2, BUFFER_SIZE, stdin);
++     // Remove the newline character from the input string
++-    buffer1[strlen(buffer1) - 1] = '\0';
+++    buffer2[strlen(buffer2) - 1] = '\0';
++     // Check if the input string is not 'q'
++-    if (strcmp(buffer1, "q") != 0) {
++-        // Prompt the user to type the character position within the string
++-        printf ("Type the character position within the string:\n");
++-        // Read input numerical value from the user
++-        fgets(numInput, NUM_INPUT_SIZE, stdin);
++-        // Remove the newline character from the input numerical value
++-        numInput[strlen(numInput) - 1] = '\0';
++-        // Convert the input numerical value to an integer
++-        position = atoi(numInput);
++-        // Check if the position is greater than or equal to the length of the string
++-        if (position >= strlen(buffer1)) {
++-            // Adjust position to the maximum available position in the string
++-            position = strlen (buffer1) - 1;
++-            printf ("Too big... Position reduced to max. available\n");
++-        }
+++    if (strcmp(buffer2, "q") != 0)
++         // Print the character found at the specified position within the string
++-        printf ("The character found at %d position is \'%c\'\n",
++-                        (int)position, buffer1[position]);
++-        
++-    }
+++        printf ("The length of is \'%s\' is %d characters\n", buffer2, (int)strlen(buffer2));
++ // Continue looping until the user inputs 'q'
++-} while (strcmp(buffer1, "q") != 0);
+++} while (strcmp(buffer2, "q") != 0);
++ // Print a message indicating the end of the demo
++-printf("*** End of Indexing Strings Demo ***\n\n");
+++printf("*** End of Measuring Strings Demo ***\n\n");
++ 
++ }
++
++commit 2e0c47e2d9121d4ffae4094b57dd366d65580a9d
++Author: Isaac <ysu83@myseneca.ca>
++Date:   Mon Apr 8 01:16:45 2024 -0400
++
++    v1
++
++diff --git a/fundamentals.c b/fundamentals.c
++index 7d3f52f..d4eb00a 100644
++--- a/fundamentals.c
+++++ b/fundamentals.c
++@@ -8,28 +8,48 @@
++ // Include the header file
++ #include "fundamentals.h"
++ 
++-// V2
++ // Function to demonstrate indexing strings
++ void fundamentals (void) {
+++
+++// V1
++ // Print a message indicating the start of the demo
++-printf("*** Start of  Strings Demo ***\n");
+++printf("*** Start of Indexing Strings Demo ***\n");
++ // Declare variables
++-char buffer2[BUFFER_SIZE];
+++char buffer1[BUFFER_SIZE];
+++char numInput[NUM_INPUT_SIZE];
+++size_t position;
++ // Loop until the user decides to quit
++ do {
++     // Prompt the user to type a non-empty string or 'q' to quit
++-    printf ("Type a string (q - to quit):\n");
+++    printf ("Type not empty string (q - to quit):\n");
++     // Read input string from the user
++-    fgets (buffer2, BUFFER_SIZE, stdin);
+++    fgets (buffer1, BUFFER_SIZE, stdin);
++     // Remove the newline character from the input string
++-    buffer2[strlen(buffer2) - 1] = '\0';
+++    buffer1[strlen(buffer1) - 1] = '\0';
++     // Check if the input string is not 'q'
++-    if (strcmp(buffer2, "q") != 0)
+++    if (strcmp(buffer1, "q") != 0) {
+++        // Prompt the user to type the character position within the string
+++        printf ("Type the character position within the string:\n");
+++        // Read input numerical value from the user
+++        fgets(numInput, NUM_INPUT_SIZE, stdin);
+++        // Remove the newline character from the input numerical value
+++        numInput[strlen(numInput) - 1] = '\0';
+++        // Convert the input numerical value to an integer
+++        position = atoi(numInput);
+++        // Check if the position is greater than or equal to the length of the string
+++        if (position >= strlen(buffer1)) {
+++            // Adjust position to the maximum available position in the string
+++            position = strlen (buffer1) - 1;
+++            printf ("Too big... Position reduced to max. available\n");
+++        }
++         // Print the character found at the specified position within the string
++-        printf ("The length of is \'%s\' is %d characters\n", buffer2, (int)strlen(buffer2));
+++        printf ("The character found at %d position is \'%c\'\n",
+++                        (int)position, buffer1[position]);
+++        
+++    }
++ // Continue looping until the user inputs 'q'
++-} while (strcmp(buffer2, "q") != 0);
+++} while (strcmp(buffer1, "q") != 0);
++ // Print a message indicating the end of the demo
++-printf("*** End of Measuring Strings Demo ***\n\n");
+++printf("*** End of Indexing Strings Demo ***\n\n");
++ 
++ }
++
++commit d8c96f8e1f98e8a8bd691ab589cab9e6cf267ca1
++Author: Isaac <ysu83@myseneca.ca>
++Date:   Mon Apr 8 01:11:42 2024 -0400
++
++    v2
++
++diff --git a/fundamentals.c b/fundamentals.c
++index d4eb00a..7d3f52f 100644
++--- a/fundamentals.c
+++++ b/fundamentals.c
++@@ -8,48 +8,28 @@
++ // Include the header file
++ #include "fundamentals.h"
++ 
+++// V2
++ // Function to demonstrate indexing strings
++ void fundamentals (void) {
++-
++-// V1
++ // Print a message indicating the start of the demo
++-printf("*** Start of Indexing Strings Demo ***\n");
+++printf("*** Start of  Strings Demo ***\n");
++ // Declare variables
++-char buffer1[BUFFER_SIZE];
++-char numInput[NUM_INPUT_SIZE];
++-size_t position;
+++char buffer2[BUFFER_SIZE];
++ // Loop until the user decides to quit
++ do {
++     // Prompt the user to type a non-empty string or 'q' to quit
++-    printf ("Type not empty string (q - to quit):\n");
+++    printf ("Type a string (q - to quit):\n");
++     // Read input string from the user
++-    fgets (buffer1, BUFFER_SIZE, stdin);
+++    fgets (buffer2, BUFFER_SIZE, stdin);
++     // Remove the newline character from the input string
++-    buffer1[strlen(buffer1) - 1] = '\0';
+++    buffer2[strlen(buffer2) - 1] = '\0';
++     // Check if the input string is not 'q'
++-    if (strcmp(buffer1, "q") != 0) {
++-        // Prompt the user to type the character position within the string
++-        printf ("Type the character position within the string:\n");
++-        // Read input numerical value from the user
++-        fgets(numInput, NUM_INPUT_SIZE, stdin);
++-        // Remove the newline character from the input numerical value
++-        numInput[strlen(numInput) - 1] = '\0';
++-        // Convert the input numerical value to an integer
++-        position = atoi(numInput);
++-        // Check if the position is greater than or equal to the length of the string
++-        if (position >= strlen(buffer1)) {
++-            // Adjust position to the maximum available position in the string
++-            position = strlen (buffer1) - 1;
++-            printf ("Too big... Position reduced to max. available\n");
++-        }
+++    if (strcmp(buffer2, "q") != 0)
++         // Print the character found at the specified position within the string
++-        printf ("The character found at %d position is \'%c\'\n",
++-                        (int)position, buffer1[position]);
++-        
++-    }
+++        printf ("The length of is \'%s\' is %d characters\n", buffer2, (int)strlen(buffer2));
++ // Continue looping until the user inputs 'q'
++-} while (strcmp(buffer1, "q") != 0);
+++} while (strcmp(buffer2, "q") != 0);
++ // Print a message indicating the end of the demo
++-printf("*** End of Indexing Strings Demo ***\n\n");
+++printf("*** End of Measuring Strings Demo ***\n\n");
++ 
++ }
++
++commit 654d7c8889ab1b1384375826285f26eebc88777b
++Author: Isaac <ysu83@myseneca.ca>
++Date:   Mon Apr 8 01:11:07 2024 -0400
++
++    v1
++
++diff --git a/fundamentals.c b/fundamentals.c
++index 7d3f52f..d4eb00a 100644
++--- a/fundamentals.c
+++++ b/fundamentals.c
++@@ -8,28 +8,48 @@
++ // Include the header file
++ #include "fundamentals.h"
++ 
++-// V2
++ // Function to demonstrate indexing strings
++ void fundamentals (void) {
+++
+++// V1
++ // Print a message indicating the start of the demo
++-printf("*** Start of  Strings Demo ***\n");
+++printf("*** Start of Indexing Strings Demo ***\n");
++ // Declare variables
++-char buffer2[BUFFER_SIZE];
+++char buffer1[BUFFER_SIZE];
+++char numInput[NUM_INPUT_SIZE];
+++size_t position;
++ // Loop until the user decides to quit
++ do {
++     // Prompt the user to type a non-empty string or 'q' to quit
++-    printf ("Type a string (q - to quit):\n");
+++    printf ("Type not empty string (q - to quit):\n");
++     // Read input string from the user
++-    fgets (buffer2, BUFFER_SIZE, stdin);
+++    fgets (buffer1, BUFFER_SIZE, stdin);
++     // Remove the newline character from the input string
++-    buffer2[strlen(buffer2) - 1] = '\0';
+++    buffer1[strlen(buffer1) - 1] = '\0';
++     // Check if the input string is not 'q'
++-    if (strcmp(buffer2, "q") != 0)
+++    if (strcmp(buffer1, "q") != 0) {
+++        // Prompt the user to type the character position within the string
+++        printf ("Type the character position within the string:\n");
+++        // Read input numerical value from the user
+++        fgets(numInput, NUM_INPUT_SIZE, stdin);
+++        // Remove the newline character from the input numerical value
+++        numInput[strlen(numInput) - 1] = '\0';
+++        // Convert the input numerical value to an integer
+++        position = atoi(numInput);
+++        // Check if the position is greater than or equal to the length of the string
+++        if (position >= strlen(buffer1)) {
+++            // Adjust position to the maximum available position in the string
+++            position = strlen (buffer1) - 1;
+++            printf ("Too big... Position reduced to max. available\n");
+++        }
++         // Print the character found at the specified position within the string
++-        printf ("The length of is \'%s\' is %d characters\n", buffer2, (int)strlen(buffer2));
+++        printf ("The character found at %d position is \'%c\'\n",
+++                        (int)position, buffer1[position]);
+++        
+++    }
++ // Continue looping until the user inputs 'q'
++-} while (strcmp(buffer2, "q") != 0);
+++} while (strcmp(buffer1, "q") != 0);
++ // Print a message indicating the end of the demo
++-printf("*** End of Measuring Strings Demo ***\n\n");
+++printf("*** End of Indexing Strings Demo ***\n\n");
++ 
++ }
++
++commit 13818629b51fdc373a9c82b0c8586ccd64f56e0f
++Author: Isaac <ysu83@myseneca.ca>
++Date:   Mon Apr 8 00:57:28 2024 -0400
++
++    v2
++
++diff --git a/fundamentals.c b/fundamentals.c
++index d4eb00a..7d3f52f 100644
++--- a/fundamentals.c
+++++ b/fundamentals.c
++@@ -8,48 +8,28 @@
++ // Include the header file
++ #include "fundamentals.h"
++ 
+++// V2
++ // Function to demonstrate indexing strings
++ void fundamentals (void) {
++-
++-// V1
++ // Print a message indicating the start of the demo
++-printf("*** Start of Indexing Strings Demo ***\n");
+++printf("*** Start of  Strings Demo ***\n");
++ // Declare variables
++-char buffer1[BUFFER_SIZE];
++-char numInput[NUM_INPUT_SIZE];
++-size_t position;
+++char buffer2[BUFFER_SIZE];
++ // Loop until the user decides to quit
++ do {
++     // Prompt the user to type a non-empty string or 'q' to quit
++-    printf ("Type not empty string (q - to quit):\n");
+++    printf ("Type a string (q - to quit):\n");
++     // Read input string from the user
++-    fgets (buffer1, BUFFER_SIZE, stdin);
+++    fgets (buffer2, BUFFER_SIZE, stdin);
++     // Remove the newline character from the input string
++-    buffer1[strlen(buffer1) - 1] = '\0';
+++    buffer2[strlen(buffer2) - 1] = '\0';
++     // Check if the input string is not 'q'
++-    if (strcmp(buffer1, "q") != 0) {
++-        // Prompt the user to type the character position within the string
++-        printf ("Type the character position within the string:\n");
++-        // Read input numerical value from the user
++-        fgets(numInput, NUM_INPUT_SIZE, stdin);
++-        // Remove the newline character from the input numerical value
++-        numInput[strlen(numInput) - 1] = '\0';
++-        // Convert the input numerical value to an integer
++-        position = atoi(numInput);
++-        // Check if the position is greater than or equal to the length of the string
++-        if (position >= strlen(buffer1)) {
++-            // Adjust position to the maximum available position in the string
++-            position = strlen (buffer1) - 1;
++-            printf ("Too big... Position reduced to max. available\n");
++-        }
+++    if (strcmp(buffer2, "q") != 0)
++         // Print the character found at the specified position within the string
++-        printf ("The character found at %d position is \'%c\'\n",
++-                        (int)position, buffer1[position]);
++-        
++-    }
+++        printf ("The length of is \'%s\' is %d characters\n", buffer2, (int)strlen(buffer2));
++ // Continue looping until the user inputs 'q'
++-} while (strcmp(buffer1, "q") != 0);
+++} while (strcmp(buffer2, "q") != 0);
++ // Print a message indicating the end of the demo
++-printf("*** End of Indexing Strings Demo ***\n\n");
+++printf("*** End of Measuring Strings Demo ***\n\n");
++ 
++ }
++
++commit e399a28e4c97a27de2a85aa1f8cb3759d2b23bea
++Author: Isaac <ysu83@myseneca.ca>
++Date:   Mon Apr 8 00:55:00 2024 -0400
++
++    v1
++
++diff --git a/converting.c b/converting.c
++new file mode 100644
++index 0000000..49ee792
++--- /dev/null
+++++ b/converting.c
++@@ -0,0 +1,23 @@
+++// CONVERTING MODULE SOURCE
+++#define _CRT_SECURE_NO_WARNINGS
+++#define BUFFER_SIZE 80
+++#include "converting.h"
+++
+++// V1
+++void converting (void) {
+++    printf ("*** Start of Converting Strings to int Demo ***\n");
+++    char intString[BUFFER_SIZE];
+++    int intNumber;
+++    do {
+++        printf ("Type an int numeric string (q - to quit):\n");
+++        fgets(intString, BUFFER_SIZE, stdin);
+++        intString [strlen(intString) - 1] = '\0';
+++        // Continue looping until the user inputs 'q'
+++        if (strcmp(intString, "q") != 0) {
+++            intNumber = atoi(intString);
+++            printf ("Converted number is %d\n", intNumber);
+++        }
+++} while (strcmp(intString, "q") != 0);
+++printf("*** End of Converting Strings to int Demo ***\n\n");
+++
+++}
++diff --git a/converting.h b/converting.h
++new file mode 100644
++index 0000000..31848d2
++--- /dev/null
+++++ b/converting.h
++@@ -0,0 +1,8 @@
+++// CONVERTING MODULE HEADER
+++#ifndef _CONVERTING_H_
+++#define _CONVERTING_H_
+++#include <stdio.h>
+++#include <string.h> 
+++#include <stdlib.h>
+++void converting (void);
+++#endif
++\ No newline at end of file
++diff --git a/fundamentals.c b/fundamentals.c
++new file mode 100644
++index 0000000..d4eb00a
++--- /dev/null
+++++ b/fundamentals.c
++@@ -0,0 +1,55 @@
+++// FUNDAMENTALS MODULE SOURCE
+++// Preprocessor directive to suppress warnings related to certain functions
+++#define CRT_SECURE_NO_WARNINGS
+++// Define the buffer size for input strings
+++#define BUFFER_SIZE 80
+++// Define the size for input of numerical values
+++#define NUM_INPUT_SIZE 10
+++// Include the header file
+++#include "fundamentals.h"
+++
+++// Function to demonstrate indexing strings
+++void fundamentals (void) {
+++
+++// V1
+++// Print a message indicating the start of the demo
+++printf("*** Start of Indexing Strings Demo ***\n");
+++// Declare variables
+++char buffer1[BUFFER_SIZE];
+++char numInput[NUM_INPUT_SIZE];
+++size_t position;
+++// Loop until the user decides to quit
+++do {
+++    // Prompt the user to type a non-empty string or 'q' to quit
+++    printf ("Type not empty string (q - to quit):\n");
+++    // Read input string from the user
+++    fgets (buffer1, BUFFER_SIZE, stdin);
+++    // Remove the newline character from the input string
+++    buffer1[strlen(buffer1) - 1] = '\0';
+++    // Check if the input string is not 'q'
+++    if (strcmp(buffer1, "q") != 0) {
+++        // Prompt the user to type the character position within the string
+++        printf ("Type the character position within the string:\n");
+++        // Read input numerical value from the user
+++        fgets(numInput, NUM_INPUT_SIZE, stdin);
+++        // Remove the newline character from the input numerical value
+++        numInput[strlen(numInput) - 1] = '\0';
+++        // Convert the input numerical value to an integer
+++        position = atoi(numInput);
+++        // Check if the position is greater than or equal to the length of the string
+++        if (position >= strlen(buffer1)) {
+++            // Adjust position to the maximum available position in the string
+++            position = strlen (buffer1) - 1;
+++            printf ("Too big... Position reduced to max. available\n");
+++        }
+++        // Print the character found at the specified position within the string
+++        printf ("The character found at %d position is \'%c\'\n",
+++                        (int)position, buffer1[position]);
+++        
+++    }
+++// Continue looping until the user inputs 'q'
+++} while (strcmp(buffer1, "q") != 0);
+++// Print a message indicating the end of the demo
+++printf("*** End of Indexing Strings Demo ***\n\n");
+++
+++}
++diff --git a/fundamentals.h b/fundamentals.h
++new file mode 100644
++index 0000000..5f8bf4f
++--- /dev/null
+++++ b/fundamentals.h
++@@ -0,0 +1,13 @@
+++// FUNDAMENTALS MODULE HEADER
+++
+++#ifndef _FUNDAMENTALS_H_ // Header guard to prevent multiple inclusions
+++#define _FUNDAMENTALS_H_
+++
+++#include <stdio.h>   // Include standard I/O functions
+++#include <stdlib.h>  // Include standard library functions
+++#include <string.h>  // Include string manipulation functions
+++
+++// Function declaration for the fundamentals function
+++void fundamentals(void);
+++
+++#endif // End of header guard
++diff --git a/main.c b/main.c
++new file mode 100644
++index 0000000..cb7f786
++--- /dev/null
+++++ b/main.c
++@@ -0,0 +1,34 @@
+++#define _CRT_SECURE_NO_WARNINGS 
+++#include "fundamentals.h"
+++#include "manipulating.h"
+++#include "converting.h"
+++#include "tokenizing.h"
+++
+++int main (void)
+++{
+++    char buff[10];
+++    do
+++    {   
+++        printf("1 - Fundamentals\n"); 
+++        printf("2 - Manipulation\n"); 
+++        printf("3 - Converting\n"); 
+++        printf("4 - Tokenizing\n"); 
+++        printf("0 - Exit\n");
+++        printf("Which module to run? \n"); 
+++        fgets(buff, 10, stdin);
+++        switch (buff[0])
+++        {
+++        case '1': fundamentals ();
+++            break;
+++        case '2': manipulating ();
+++            break;
+++        case '3': converting();
+++            break;
+++        case '4': tokenizing();
+++            break;
+++        }
+++        
+++    } while (buff[0] != '0'); 
+++return 0;
+++
+++}
++diff --git a/manipulating.c b/manipulating.c
++new file mode 100644
++index 0000000..fd07a71
++--- /dev/null
+++++ b/manipulating.c
++@@ -0,0 +1,25 @@
+++// MANIPULATING SOURCE
+++#define CRT_SECURE_NO_WARNINGS
+++#define BUFFER_SIZE 80
+++#include "manipulating.h"
+++
+++// V1
+++void manipulating (void) {
+++    printf("*** Start of Concatenating Strings Demo ***\n");
+++    char string1[BUFFER_SIZE];
+++    char string2[BUFFER_SIZE];
+++do {
+++    printf ("Type the 1st string (q - to quit): \n"); 
+++    fgets (string1, BUFFER_SIZE, stdin);
+++    string1[strlen(string1) - 1] = '\0';
+++    if ((strcmp(string1, "q") != 0)) {
+++        printf ("Type the 2nd string: \n"); 
+++        fgets (string2, BUFFER_SIZE, stdin);
+++        string2 [strlen(string2) - 1] = '\0';
+++        strcat(string1, string2);
+++        printf ("Concatenated string is \'%s\'\n", string1) ;
+++    }
+++} while (strcmp(string1, "q") != 0);
+++printf("*** End of Concatenating strings Demo ***\n\n");
+++
+++}
++\ No newline at end of file
++diff --git a/manipulating.h b/manipulating.h
++new file mode 100644
++index 0000000..4c7ab15
++--- /dev/null
+++++ b/manipulating.h
++@@ -0,0 +1,7 @@
+++// MANIPULATING MODULE HEADER
+++#ifndef _MANIPULATING_H_
+++#define _MANIPULATING_H_
+++#include <stdio.h>
+++#include <string.h> 
+++void manipulating (void);
+++#endif
++\ No newline at end of file
++diff --git a/tokenizing.c b/tokenizing.c
++new file mode 100644
++index 0000000..3223552
++--- /dev/null
+++++ b/tokenizing.c
++@@ -0,0 +1,27 @@
+++// TOKENIZING MODULE SOURCE
+++#define _CRT_SECURE_ NO_WARNINGS
+++#define BUFFER_SIZE 300
+++#include "tokenizing.h"
+++
+++// V1
+++void tokenizing (void) {
+++    printf ("*** Start of Tokenizing Words Demo ***\n");
+++    char words[BUFFER_SIZE];
+++    char* nextWord = NULL;
+++    int wordsCounter;
+++    do {
+++        printf ("Type a few words separated by space (q - to quit):\n"); 
+++        fgets(words, BUFFER_SIZE, stdin);
+++        words[strlen(words) - 1] = '\0';
+++        if (strcmp(words, "q") != 0) {
+++            nextWord = strtok(words, " ");
+++            wordsCounter = 1;
+++            while (nextWord) {
+++                printf ("Word #%d is \'%s\'\n", wordsCounter++, nextWord);
+++                nextWord = strtok(NULL, " ");
+++            }
+++        }
+++} while (strcmp(words, "q") != 0);
+++printf("*** End of rokenizing Words Demo ***\n\n");
+++
+++}
++\ No newline at end of file
++diff --git a/tokenizing.h b/tokenizing.h
++new file mode 100644
++index 0000000..0599f01
++--- /dev/null
+++++ b/tokenizing.h
++@@ -0,0 +1,7 @@
+++// TOKENIZING MODULE HEADER 
+++#ifndef _TOKENIZING_H_
+++#define _TOKENIZING_H_
+++#include <stdio.h>
+++#include <string.h> 
+++void tokenizing (void);
+++#endif
++\ No newline at end of file
+diff --git a/fundamentals-testing.txt b/fundamentals-testing.txt
+new file mode 100644
+index 0000000..4790be1
+--- /dev/null
++++ b/fundamentals-testing.txt
+@@ -0,0 +1,29 @@
++1 - Fundamentals
++2 - Manipulation
++3 - Converting
++4 - Tokenizing
++0 - Exit
++Which module to run? 
++1
++*** Start of  Strings Demo ***
++Type a string (q - to quit):
++Hey
++The length of is 'Hey' is 3 characters
++Type a string (q - to quit):
++Seneca
++The length of is 'Seneca' is 6 characters
++Type a string (q - to quit):
++abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefg
++The length of is 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz' is 78 characters
++Type a string (q - to quit):
++The length of is 'bcdefg' is 6 characters
++Type a string (q - to quit):
++q
++*** End of Measuring Strings Demo ***
++
++1 - Fundamentals
++2 - Manipulation
++3 - Converting
++4 - Tokenizing
++0 - Exit
++Which module to run? 
+diff --git a/fundamentals.h b/fundamentals.h
+new file mode 100644
+index 0000000..5f8bf4f
+--- /dev/null
++++ b/fundamentals.h
+@@ -0,0 +1,13 @@
++// FUNDAMENTALS MODULE HEADER
++
++#ifndef _FUNDAMENTALS_H_ // Header guard to prevent multiple inclusions
++#define _FUNDAMENTALS_H_
++
++#include <stdio.h>   // Include standard I/O functions
++#include <stdlib.h>  // Include standard library functions
++#include <string.h>  // Include string manipulation functions
++
++// Function declaration for the fundamentals function
++void fundamentals(void);
++
++#endif // End of header guard
+diff --git a/fundamentals_screenshot_v2.png b/fundamentals_screenshot_v2.png
+new file mode 100644
+index 0000000..54b9d12
+Binary files /dev/null and b/fundamentals_screenshot_v2.png differ
+diff --git a/main-git-log.txt b/main-git-log.txt
+new file mode 100644
+index 0000000..a2d1be4
+--- /dev/null
++++ b/main-git-log.txt
+@@ -0,0 +1,78 @@
++Last login: Mon Apr  8 16:21:36 on ttys000
++placerda@Priscillas-MacBook-Pro ~ % cd Downloads
++placerda@Priscillas-MacBook-Pro Downloads % cd CPR101-Final-Project-main
++placerda@Priscillas-MacBook-Pro CPR101-Final-Project-main % cd v1
++placerda@Priscillas-MacBook-Pro v1 % git config --global placerda "Priscilla"
++error: key does not contain a section: placerda
++placerda@Priscillas-MacBook-Pro v1 % git config --global user.name "Priscilla"
++placerda@Priscillas-MacBook-Pro v1 % git config --global user.email "placerda-cavalcante@senecacollege.ca"
++placerda@Priscillas-MacBook-Pro v1 % git init
++Initialized empty Git repository in /Users/placerda/Downloads/CPR101-Final-Project-main/v1/.git/
++placerda@Priscillas-MacBook-Pro v1 % git add file_name
++fatal: pathspec 'file_name' did not match any files
++placerda@Priscillas-MacBook-Pro v1 % git add converting.c
++placerda@Priscillas-MacBook-Pro v1 % git add converting.h
++placerda@Priscillas-MacBook-Pro v1 % git add fundamentals.c
++placerda@Priscillas-MacBook-Pro v1 % git add fundamentals.h
++placerda@Priscillas-MacBook-Pro v1 % git add manipulating.c
++placerda@Priscillas-MacBook-Pro v1 % git add manipulating.h
++placerda@Priscillas-MacBook-Pro v1 % git add tokenizing.c  
++placerda@Priscillas-MacBook-Pro v1 % git add tokenizing.h 
++placerda@Priscillas-MacBook-Pro v1 % git add main.c      
++placerda@Priscillas-MacBook-Pro v1 % git commit -m v1
++[main (root-commit) 396adda] v1
++ 9 files changed, 239 insertions(+)
++ create mode 100644 converting.c
++ create mode 100644 converting.h
++ create mode 100644 fundamentals.c
++ create mode 100644 fundamentals.h
++ create mode 100644 main.c
++ create mode 100644 manipulating.c
++ create mode 100644 manipulating.h
++ create mode 100644 tokenizing.c
++ create mode 100644 tokenizing.h
++placerda@Priscillas-MacBook-Pro v1 % git add converting.c
++placerda@Priscillas-MacBook-Pro v1 % git add converting.h  
++placerda@Priscillas-MacBook-Pro v1 % git add fundamentals.c
++placerda@Priscillas-MacBook-Pro v1 % git add fundamentals.h
++placerda@Priscillas-MacBook-Pro v1 % git add manipulating.c
++placerda@Priscillas-MacBook-Pro v1 % git add manipulating.h
++placerda@Priscillas-MacBook-Pro v1 % git add tokenizing.c  
++placerda@Priscillas-MacBook-Pro v1 % git add tokenizing.h  
++placerda@Priscillas-MacBook-Pro v1 % git add main.c        
++placerda@Priscillas-MacBook-Pro v1 % git commit -m v2      
++[main 9fe716a] v2
++ 6 files changed, 85 insertions(+), 140 deletions(-)
++placerda@Priscillas-MacBook-Pro v1 % git status
++On branch main
++Untracked files:
++  (use "git add <file>..." to include in what will be committed)
++	Final-Project_Test_Cases.xlsx
++	Fundamentals_test.png
++	README.md
++	converting_test.png
++	manipulation_test.png
++	tokenizing_test.png
++
++nothing added to commit but untracked files present (use "git add" to track)
++placerda@Priscillas-MacBook-Pro v1 % git log
++commit 9fe716a024866e825136847b8c25d4b132d8cd5f (HEAD -> main)
++Author: Priscilla <placerda-cavalcante@senecacollege.ca>
++Date:   Mon Apr 8 18:42:06 2024 -0400
++
++    v2
++
++commit 396adda42bb7bdeeaf1bd1f1b55550dba5c61950
++Author: Priscilla <placerda-cavalcante@senecacollege.ca>
++Date:   Mon Apr 8 17:24:53 2024 -0400
++
++    v1
++placerda@Priscillas-MacBook-Pro v1 % git --no paper log -p>final_project-git-log.txt
++unknown option: --no
++usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
++           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
++           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
++           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
++           [--super-prefix=<path>] [--config-env=<name>=<envvar>]
++           <command> [<args>]
++placerda@Priscillas-MacBook-Pro v1 %     
+\ No newline at end of file
+diff --git a/main-test-screenshot1.png b/main-test-screenshot1.png
+new file mode 100644
+index 0000000..96f470c
+Binary files /dev/null and b/main-test-screenshot1.png differ
+diff --git a/main-test-screenshot2.png b/main-test-screenshot2.png
+new file mode 100644
+index 0000000..4ebc464
+Binary files /dev/null and b/main-test-screenshot2.png differ
+diff --git a/main-test-screenshot3.png b/main-test-screenshot3.png
+new file mode 100644
+index 0000000..fa3987e
+Binary files /dev/null and b/main-test-screenshot3.png differ
+diff --git a/main-test.txt b/main-test.txt
+new file mode 100644
+index 0000000..79102da
+--- /dev/null
++++ b/main-test.txt
+@@ -0,0 +1,93 @@
++[?2004l
++1 - Fundamentals
++2 - Manipulation
++3 - Converting
++4 - Tokenizing
++0 - Exit
++Which module to run? 
++1
++*** Start of Strings Demo ***
++Type a string (q - to quit):
++testing
++The length of is 'testing' is 7 characters
++Type a string (q - to quit):
++string      2 strung   ing
++The length of is 'string' is 6 characters
++Type a string (q - to quit):
++moduke  le
++The length of is 'module' is 6 characters
++Type a string (q - to quit):
++q
++*** End of Measuring Strings Demo ***
++
++1 - Fundamentals
++2 - Manipulation
++3 - Converting
++4 - Tokenizing
++0 - Exit
++Which module to run? 
++2
++*** Start of Comparing Strings Demo ***
++Type the 1st string to compare (q - to quit): 
++testinff  g
++Type the 2nd string to compare: 
++st  manipulation
++'testing' string is greater than 'manipulation'
++Type the 1st string to compare (q - to quit): 
++ahiughsfusgf
++Type the 2nd string to compare: 
++auhfuishfieajf;aoisjkaon
++'ahiughsfusgf' string is less than 'auhfuishfieajf;aoisjkaon'
++Type the 1st string to compare (q - to quit): 
++3
++Type the 2nd string to compare: 
++hjhjd
++'3' string is less than 'hjhjd'
++Type the 1st string to compare (q - to quit): 
++q
++*** End of Comparing strings Demo ***
++
++1 - Fundamentals
++2 - Manipulation
++3 - Converting
++4 - Tokenizing
++0 - Exit
++Which module to run? 
++3
++*** Start of Converting Strings to double Demo ***
++Type the double numeric string (q - to quit):
++456.7382
++Converted number is 456.738200
++Type the double numeric string (q - to quit):
++65739.98
++Converted number is 65739.980000
++Type the double numeric string (q - to quit):
++q
++*** End of Converting Strings to double Demo ***
++
++1 - Fundamentals
++2 - Manipulation
++3 - Converting
++4 - Tokenizing
++0 - Exit
++Which module to run? 
++4
++*** Start of Tokenizing Words Demo ***
++Type a few words separated by space (q - to quit):
++testing tokenizing words demo
++Word #1 is 'testing'
++Word #2 is 'tokenizing'
++Word #3 is 'words'
++Word #4 is 'demo'
++Type a few words separated by space (q - to quit):
++testunf       q
++*** End of Tokenizing Words Demo ***
++
++1 - Fundamentals
++2 - Manipulation
++3 - Converting
++4 - Tokenizing
++0 - Exit
++Which module to run? 
++0
++
+\ No newline at end of file
+diff --git a/manipulating-git-log.txt b/manipulating-git-log.txt
+new file mode 100644
+index 0000000..f0ebf37
+--- /dev/null
++++ b/manipulating-git-log.txt
+@@ -0,0 +1,142 @@
++commit 16bd060fbbac59c4a53e29a0cc3a6b904a4cb186
++Author: Fatemeh Ansari <fansari11@myseneca.ca>
++Date:   Tue Apr 9 17:39:21 2024 -0400
++
++    v2
++
++diff --git a/manipulating.c b/manipulating.c
++index acebd60..24a8e93 100644
++--- a/manipulating.c
+++++ b/manipulating.c
++@@ -1,36 +1,33 @@
++-#include <stdio.h>      
++-#include <string.h>    
++-#define CRT_SECURE_NO_WARNINGS     
++-#define BUFFER_SIZE 80            
++-#include "manipulating.h"        
+++// MANIPULATING SOURCE
+++#define CRT_SECURE_NO_WARNINGS
+++#define BUFFER_SIZE 80
+++#include "manipulating.h"
++ 
++-// Function to demonstrate string concatenation
++-void manipulating(void) {
++-    printf("*** Start of Concatenating Strings Demo ***\n");
++-    // Declare buffer 
++-    char string1[BUFFER_SIZE];    
++-    char string2[BUFFER_SIZE];   
+++void manipulating (void) {
+++    printf("*** Start of Comparing Strings Demo ***\n");
+++    char compare1[BUFFER_SIZE];
+++    char compare2[BUFFER_SIZE];
+++    int result;
+++    // Loop until the user enters 'q' to quit
+++do {
+++    printf ("Type the 1st string to compare (q - to quit): \n"); 
+++    fgets (compare1, BUFFER_SIZE, stdin);
+++    compare1[strlen(compare1) - 1] = '\0';// Remove the newline character
+++    // Check if the entered string is not 'q'
+++    if (strcmp(compare1, "q") != 0) {
+++        printf ("Type the 2nd string to compare: \n"); 
+++        fgets (compare2, BUFFER_SIZE, stdin);
+++        compare2 [strlen(compare2) - 1] = '\0';// Remove the newline character
+++        // Compare the two strings
+++        result=strcmp(compare1, compare2);
+++        if (result < 0)
+++            printf("\'%s\' string is less than \'%s\'\n", compare1, compare2);
+++        else if (result == 0)
+++            printf("\'%s\' string is equal to \'%s\'\n", compare1, compare2);
+++        else
+++            printf("\'%s\' string is greater than \'%s\'\n", compare1, compare2);
+++    }
+++} while (strcmp(compare1, "q") != 0);// Continue the loop until 'q' is entered
+++printf("*** End of Comparing strings Demo ***\n\n");
++ 
++-    // Loop until user quits
++-    do {
++-        printf("Type the 1st string (q - to quit): \n");   
++-        // Read first string from user input
++-        fgets(string1, BUFFER_SIZE, stdin);    
++-        // Remove newline character from input
++-        string1[strlen(string1) - 1] = '\0';   
++-
++-        // If user does not enter "q", proceed with concatenation
++-        if ((strcmp(string1, "q") != 0)) {
++-            printf("Type the 2nd string: \n"); 
++-            // Read second string from user input
++-            fgets(string2, BUFFER_SIZE, stdin);    
++-            // Remove newline character from input
++-            string2[strlen(string2) - 1] = '\0';   
++-            // Concatenate second string to first string safely
++-            strcat_s(string1, BUFFER_SIZE, string2);
++-            printf("Concatenated string is \'%s\'\n", string1);   
++-        }
++-    } while (strcmp(string1, "q") != 0);   // Continue loop until user enters "q"
++-
++-    printf("*** End of Concatenating strings Demo ***\n\n");   
++-}
+++}
++\ No newline at end of file
++
++commit 9846af6eae746024078ffc22b036080d4653b4b8
++Author: Fatemeh Ansari <fansari11@myseneca.ca>
++Date:   Tue Apr 9 17:38:33 2024 -0400
++
++    v1
++
++diff --git a/manipulating.c b/manipulating.c
++new file mode 100644
++index 0000000..acebd60
++--- /dev/null
+++++ b/manipulating.c
++@@ -0,0 +1,36 @@
+++#include <stdio.h>      
+++#include <string.h>    
+++#define CRT_SECURE_NO_WARNINGS     
+++#define BUFFER_SIZE 80            
+++#include "manipulating.h"        
+++
+++// Function to demonstrate string concatenation
+++void manipulating(void) {
+++    printf("*** Start of Concatenating Strings Demo ***\n");
+++    // Declare buffer 
+++    char string1[BUFFER_SIZE];    
+++    char string2[BUFFER_SIZE];   
+++
+++    // Loop until user quits
+++    do {
+++        printf("Type the 1st string (q - to quit): \n");   
+++        // Read first string from user input
+++        fgets(string1, BUFFER_SIZE, stdin);    
+++        // Remove newline character from input
+++        string1[strlen(string1) - 1] = '\0';   
+++
+++        // If user does not enter "q", proceed with concatenation
+++        if ((strcmp(string1, "q") != 0)) {
+++            printf("Type the 2nd string: \n"); 
+++            // Read second string from user input
+++            fgets(string2, BUFFER_SIZE, stdin);    
+++            // Remove newline character from input
+++            string2[strlen(string2) - 1] = '\0';   
+++            // Concatenate second string to first string safely
+++            strcat_s(string1, BUFFER_SIZE, string2);
+++            printf("Concatenated string is \'%s\'\n", string1);   
+++        }
+++    } while (strcmp(string1, "q") != 0);   // Continue loop until user enters "q"
+++
+++    printf("*** End of Concatenating strings Demo ***\n\n");   
+++}
++diff --git a/manipulating.h b/manipulating.h
++new file mode 100644
++index 0000000..4c7ab15
++--- /dev/null
+++++ b/manipulating.h
++@@ -0,0 +1,7 @@
+++// MANIPULATING MODULE HEADER
+++#ifndef _MANIPULATING_H_
+++#define _MANIPULATING_H_
+++#include <stdio.h>
+++#include <string.h> 
+++void manipulating (void);
+++#endif
++\ No newline at end of file
+diff --git a/manipulating.h b/manipulating.h
+new file mode 100644
+index 0000000..4c7ab15
+--- /dev/null
++++ b/manipulating.h
+@@ -0,0 +1,7 @@
++// MANIPULATING MODULE HEADER
++#ifndef _MANIPULATING_H_
++#define _MANIPULATING_H_
++#include <stdio.h>
++#include <string.h> 
++void manipulating (void);
++#endif
+\ No newline at end of file
+diff --git a/manipulating_screenshot_v2.jpeg b/manipulating_screenshot_v2.jpeg
+new file mode 100644
+index 0000000..42c0b6a
+Binary files /dev/null and b/manipulating_screenshot_v2.jpeg differ
+diff --git a/tokenizing-git-log.txt b/tokenizing-git-log.txt
+new file mode 100644
+index 0000000..3aecf7b
+--- /dev/null
++++ b/tokenizing-git-log.txt
+@@ -0,0 +1,186 @@
++commit f40bb93cadbfc69086d475f6895471927b808391
++Author: Lawrence Wong <yhwong12@myseneca.ca>
++Date:   Tue Apr 9 17:48:44 2024 -0400
++
++    v2
++
++diff --git a/tokenizing.c b/tokenizing.c
++index 015ec31..a23a605 100644
++--- a/tokenizing.c
+++++ b/tokenizing.c
++@@ -1,28 +1,71 @@
++ // TOKENIZING MODULE SOURCE
++-#define _CRT_SECURE_ NO_WARNINGS
+++// This line indicates that this file contains the implementation of a tokenizing module.
+++
+++#define _CRT_SECURE_NO_WARNINGS
+++// This line is a preprocessor directive to define a macro "_CRT_SECURE_NO_WARNINGS" which suppresses warnings related to certain secure functions in the CRT (C Run-Time) library.
+++
++ #define BUFFER_SIZE 300
+++// This line defines a macro BUFFER_SIZE with a value of 300, indicating the size of the buffer used to store words.
+++
++ #include "tokenizing.h"
+++// This line includes the header file "tokenizing.h", which likely contains declarations or definitions needed for this implementation.
++ 
++ // V1
++-void tokenizing (void) { // start the Tokenizing module program
++-    printf ("*** Start of Tokenizing Words Demo ***\n");
++-    char words[BUFFER_SIZE]; //sets the array size of words variable acordly with buzzer size that is equal to 300
++-    char* nextWord = NULL; // nextWord sends its input to null
++-    int wordsCounter; // declaration of the variable wordsCounter
++-    
+++// This is likely a version marker or a comment indicating the start of version 1 of this code.
+++
+++void tokenizing(void) {
+++// This line defines the function "tokenizing" which takes no arguments and returns void.
+++
+++    printf("*** Start of Tokenizing Words Demo ***\n");
+++    // This line prints a message indicating the start of the tokenizing words demo.
+++
+++    char words[BUFFER_SIZE];
+++    // This line declares an array named "words" of type char with size BUFFER_SIZE, used to store user input.
+++
+++    char* nextWord = NULL;
+++    // This line declares a char pointer "nextWord" and initializes it to NULL.
+++
+++    int wordsCounter;
+++    // This line declares an integer variable "wordsCounter" without initialization.
+++
++     do {
++-        printf ("Type a few words separated by space (q - to quit):\n"); //message asking for a input
++-        fgets(words, BUFFER_SIZE, stdin); // Read input from the user
++-        words[strlen(words) - 1] = '\0'; 
+++    // This line starts a do-while loop. It will execute at least once and will continue to execute as long as the condition in the while statement evaluates to true.
+++
+++        printf("Type a few words separated by space (q - to quit):\n");
+++        // This line prints a message prompting the user to type words.
+++
+++        fgets(words, BUFFER_SIZE, stdin);
+++        // This line reads input from the standard input (stdin) and stores it in the "words" array, up to a maximum of BUFFER_SIZE characters.
+++
+++        words[strlen(words) - 1] = '\0';
+++        // This line removes the trailing newline character from the input string by replacing it with a null terminator, effectively trimming the newline character.
+++
++         if (strcmp(words, "q") != 0) {
+++        // This line checks if the input string is not equal to "q".
+++
++             nextWord = strtok(words, " ");
+++            // This line tokenizes the input string into words using space (" ") as the delimiter and assigns the pointer to the first token to "nextWord".
+++
++             wordsCounter = 1;
+++            // This line initializes the wordsCounter to 1.
+++
++             while (nextWord) {
++-                printf ("Word #%d is \'%s\'\n", wordsCounter++, nextWord); // the final ouput, seprated by words, and says to the user how much words are written
+++            // This line starts a while loop which iterates as long as "nextWord" is not NULL.
+++
+++                printf("Word #%d is \'%s\'\n", wordsCounter++, nextWord);
+++                // This line prints each tokenized word along with its count.
+++
++                 nextWord = strtok(NULL, " ");
+++                // This line continues tokenizing the input string from where it left off, searching for subsequent tokens.
+++
++             }
++         }
++-} while (strcmp(words, "q") != 0); // condition to make the loop working, that means until the input be "q"
++-printf("*** End of rokenizing Words Demo ***\n\n"); // message indicating the end of the module
++ 
++-}
++\ No newline at end of file
+++    } while (strcmp(words, "q") != 0);
+++    // This line checks if the input string is not equal to "q", if true, the loop continues; otherwise, it exits.
+++
+++    printf("*** End of Tokenizing Words Demo ***\n\n");
+++    // This line prints a message indicating the end of the tokenizing words demo.
+++
+++}
+++// This line marks the end of the "tokenizing" function.
++\ No newline at end of file
++diff --git a/tokenizing.h b/tokenizing.h
++index 0599f01..cadd874 100644
++--- a/tokenizing.h
+++++ b/tokenizing.h
++@@ -1,7 +1,23 @@
++ // TOKENIZING MODULE HEADER 
+++// This line is a comment indicating the purpose of the header file.
+++
++ #ifndef _TOKENIZING_H_
+++// This line is a preprocessor directive that checks if the macro _TOKENIZING_H_ is not defined.
+++// If it's not defined, the following code block will be included, preventing multiple inclusions of the same header file.
+++
++ #define _TOKENIZING_H_
+++// This line defines the macro _TOKENIZING_H_ to prevent multiple inclusions of the header file.
+++
++ #include <stdio.h>
+++// This line includes the standard input-output header file, which provides declarations for input and output functions.
+++
++ #include <string.h> 
++-void tokenizing (void);
++-#endif
++\ No newline at end of file
+++// This line includes the string header file, which provides various string manipulation functions and declarations.
+++
+++void tokenizing(void);
+++// This line declares a function prototype for the function tokenizing().
+++// The function takes no arguments and returns void.
+++
+++#endif
+++// This line marks the end of the conditional compilation directive started by #ifndef.
+++// It ensures that the contents of the header file are only included once in the compilation process.
++\ No newline at end of file
++
++commit bcdf3995d18b063aa89e62495ad6ef54b2b4bfd5
++Author: Lawrence Wong <yhwong12@myseneca.ca>
++Date:   Tue Apr 9 17:47:24 2024 -0400
++
++    v1
++
++diff --git a/tokenizing.c b/tokenizing.c
++new file mode 100644
++index 0000000..015ec31
++--- /dev/null
+++++ b/tokenizing.c
++@@ -0,0 +1,28 @@
+++// TOKENIZING MODULE SOURCE
+++#define _CRT_SECURE_ NO_WARNINGS
+++#define BUFFER_SIZE 300
+++#include "tokenizing.h"
+++
+++// V1
+++void tokenizing (void) { // start the Tokenizing module program
+++    printf ("*** Start of Tokenizing Words Demo ***\n");
+++    char words[BUFFER_SIZE]; //sets the array size of words variable acordly with buzzer size that is equal to 300
+++    char* nextWord = NULL; // nextWord sends its input to null
+++    int wordsCounter; // declaration of the variable wordsCounter
+++    
+++    do {
+++        printf ("Type a few words separated by space (q - to quit):\n"); //message asking for a input
+++        fgets(words, BUFFER_SIZE, stdin); // Read input from the user
+++        words[strlen(words) - 1] = '\0'; 
+++        if (strcmp(words, "q") != 0) {
+++            nextWord = strtok(words, " ");
+++            wordsCounter = 1;
+++            while (nextWord) {
+++                printf ("Word #%d is \'%s\'\n", wordsCounter++, nextWord); // the final ouput, seprated by words, and says to the user how much words are written
+++                nextWord = strtok(NULL, " ");
+++            }
+++        }
+++} while (strcmp(words, "q") != 0); // condition to make the loop working, that means until the input be "q"
+++printf("*** End of rokenizing Words Demo ***\n\n"); // message indicating the end of the module
+++
+++}
++\ No newline at end of file
++diff --git a/tokenizing.h b/tokenizing.h
++new file mode 100644
++index 0000000..0599f01
++--- /dev/null
+++++ b/tokenizing.h
++@@ -0,0 +1,7 @@
+++// TOKENIZING MODULE HEADER 
+++#ifndef _TOKENIZING_H_
+++#define _TOKENIZING_H_
+++#include <stdio.h>
+++#include <string.h> 
+++void tokenizing (void);
+++#endif
++\ No newline at end of file
+diff --git a/tokenizing.h b/tokenizing.h
+new file mode 100644
+index 0000000..0599f01
+--- /dev/null
++++ b/tokenizing.h
+@@ -0,0 +1,7 @@
++// TOKENIZING MODULE HEADER 
++#ifndef _TOKENIZING_H_
++#define _TOKENIZING_H_
++#include <stdio.h>
++#include <string.h> 
++void tokenizing (void);
++#endif
+\ No newline at end of file
+diff --git a/tokenizing_screenshop_v2.jpeg b/tokenizing_screenshop_v2.jpeg
+new file mode 100644
+index 0000000..10d1e2c
+Binary files /dev/null and b/tokenizing_screenshop_v2.jpeg differ
+
+commit 258a14f2045d790c743eba67bea28cca88c1dcf5
+Author: Priscilla Lacerda <placerda-cavalcante@myseneca.ca>
+Date:   Tue Apr 16 21:31:28 2024 -0400
+
+    v2
+
+diff --git a/converting.c b/converting.c
+new file mode 100644
+index 0000000..d965617
+--- /dev/null
++++ b/converting.c
+@@ -0,0 +1,31 @@
++// CONVERTING MODULE SOURCE
++#define CRT_SECURE_NO_WARNINGS
++#define BUFFER_SIZE 80
++#include "converting.h"
++
++// V2
++
++void converting (void) {
++    
++    printf ("*** Start of Converting Strings to double Demo ***\n");
++    char doubleString[BUFFER_SIZE];
++    double doubleNumber;
++    do {
++        // Prompts the user to enter a numeric string
++        printf ("Type the double numeric string (q - to quit):\n");
++        // Reads a line from the standard input into doubleString
++        fgets(doubleString, BUFFER_SIZE, stdin);
++        // Removes the newline character at the end of the string
++        doubleString [strlen(doubleString) - 1] = '\0';
++        // Checks if the entered string is not "q"
++        if ((strcmp(doubleString, "q") != 0)) {
++            // Converts the string to a double using atof() function
++            doubleNumber = atof (doubleString);
++            // Prints the converted double number
++            printf ("Converted number is %f\n", doubleNumber);
++        }
++    } while (strcmp(doubleString, "q") != 0);// Loops until the entered string is "q"
++    //
++    printf("*** End of Converting Strings to double Demo ***\n\n");
++
++}
+\ No newline at end of file
+diff --git a/fundamentals.c b/fundamentals.c
+new file mode 100644
+index 0000000..1f0b2ce
+--- /dev/null
++++ b/fundamentals.c
+@@ -0,0 +1,35 @@
++// FUNDAMENTALS MODULE SOURCE
++// Preprocessor directive to suppress warnings related to certain functions
++#define CRT_SECURE_NO_WARNINGS
++// Define the buffer size for input strings
++#define BUFFER_SIZE 80
++// Define the size for input of numerical values
++#define NUM_INPUT_SIZE 10
++// Include the header file
++#include "fundamentals.h"
++
++// V2
++// Function to demonstrate indexing strings
++void fundamentals (void) {
++// Print a message indicating the start of the demo
++printf("*** Start of Strings Demo ***\n");
++// Declare variables
++char buffer2[BUFFER_SIZE];
++// Loop until the user decides to quit
++do {
++    // Prompt the user to type a non-empty string or 'q' to quit
++    printf ("Type a string (q - to quit):\n");
++    // Read input string from the user
++    fgets (buffer2, BUFFER_SIZE, stdin);
++    // Remove the newline character from the input string
++    buffer2[strlen(buffer2) - 1] = '\0';
++    // Check if the input string is not 'q'
++    if (strcmp(buffer2, "q") != 0)
++        // Print the character found at the specified position within the string
++        printf ("The length of is \'%s\' is %d characters\n", buffer2, (int)strlen(buffer2));
++// Continue looping until the user inputs 'q'
++} while (strcmp(buffer2, "q") != 0);
++// Print a message indicating the end of the demo
++printf("*** End of Measuring Strings Demo ***\n\n");
++
++}
+\ No newline at end of file
+diff --git a/manipulating.c b/manipulating.c
+new file mode 100644
+index 0000000..24a8e93
+--- /dev/null
++++ b/manipulating.c
+@@ -0,0 +1,33 @@
++// MANIPULATING SOURCE
++#define CRT_SECURE_NO_WARNINGS
++#define BUFFER_SIZE 80
++#include "manipulating.h"
++
++void manipulating (void) {
++    printf("*** Start of Comparing Strings Demo ***\n");
++    char compare1[BUFFER_SIZE];
++    char compare2[BUFFER_SIZE];
++    int result;
++    // Loop until the user enters 'q' to quit
++do {
++    printf ("Type the 1st string to compare (q - to quit): \n"); 
++    fgets (compare1, BUFFER_SIZE, stdin);
++    compare1[strlen(compare1) - 1] = '\0';// Remove the newline character
++    // Check if the entered string is not 'q'
++    if (strcmp(compare1, "q") != 0) {
++        printf ("Type the 2nd string to compare: \n"); 
++        fgets (compare2, BUFFER_SIZE, stdin);
++        compare2 [strlen(compare2) - 1] = '\0';// Remove the newline character
++        // Compare the two strings
++        result=strcmp(compare1, compare2);
++        if (result < 0)
++            printf("\'%s\' string is less than \'%s\'\n", compare1, compare2);
++        else if (result == 0)
++            printf("\'%s\' string is equal to \'%s\'\n", compare1, compare2);
++        else
++            printf("\'%s\' string is greater than \'%s\'\n", compare1, compare2);
++    }
++} while (strcmp(compare1, "q") != 0);// Continue the loop until 'q' is entered
++printf("*** End of Comparing strings Demo ***\n\n");
++
++}
+\ No newline at end of file
+diff --git a/tokenizing.c b/tokenizing.c
+new file mode 100644
+index 0000000..5393b26
+--- /dev/null
++++ b/tokenizing.c
+@@ -0,0 +1,71 @@
++// TOKENIZING MODULE SOURCE
++// This line indicates that this file contains the implementation of a tokenizing module.
++
++#define _CRT_SECURE_NO_WARNINGS
++// This line is a preprocessor directive to define a macro "_CRT_SECURE_NO_WARNINGS" which suppresses warnings related to certain secure functions in the CRT (C Run-Time) library.
++
++#define BUFFER_SIZE 300
++// This line defines a macro BUFFER_SIZE with a value of 300, indicating the size of the buffer used to store words.
++
++#include "tokenizing.h"
++// This line includes the header file "tokenizing.h", which likely contains declarations or definitions needed for this implementation.
++
++// V1
++// This is likely a version marker or a comment indicating the start of version 1 of this code.
++
++void tokenizing(void) {
++// This line defines the function "tokenizing" which takes no arguments and returns void.
++
++    printf("*** Start of Tokenizing Words Demo ***\n");
++    // This line prints a message indicating the start of the tokenizing words demo.
++
++    char words[BUFFER_SIZE];
++    // This line declares an array named "words" of type char with size BUFFER_SIZE, used to store user input.
++
++    char* nextWord = NULL;
++    // This line declares a char pointer "nextWord" and initializes it to NULL.
++
++    int wordsCounter;
++    // This line declares an integer variable "wordsCounter" without initialization.
++
++    do {
++    // This line starts a do-while loop. It will execute at least once and will continue to execute as long as the condition in the while statement evaluates to true.
++
++        printf("Type a few words separated by space (q - to quit):\n");
++        // This line prints a message prompting the user to type words.
++
++        fgets(words, BUFFER_SIZE, stdin);
++        // This line reads input from the standard input (stdin) and stores it in the "words" array, up to a maximum of BUFFER_SIZE characters.
++
++        words[strlen(words) - 1] = '\0';
++        // This line removes the trailing newline character from the input string by replacing it with a null terminator, effectively trimming the newline character.
++
++        if (strcmp(words, "q") != 0) {
++        // This line checks if the input string is not equal to "q".
++
++            nextWord = strtok(words, " ");
++            // This line tokenizes the input string into words using space (" ") as the delimiter and assigns the pointer to the first token to "nextWord".
++
++            wordsCounter = 1;
++            // This line initializes the wordsCounter to 1.
++
++            while (nextWord) {
++            // This line starts a while loop which iterates as long as "nextWord" is not NULL.
++
++                printf("Word #%d is \'%s\'\n", wordsCounter++, nextWord);
++                // This line prints each tokenized word along with its count.
++
++                nextWord = strtok(NULL, " ");
++                // This line continues tokenizing the input string from where it left off, searching for subsequent tokens.
++
++            }
++        }
++
++    } while (strcmp(words, "q") != 0);
++    // This line checks if the input string is not equal to "q", if true, the loop continues; otherwise, it exits.
++
++    printf("*** End of Tokenizing Words Demo ***\n\n");
++    // This line prints a message indicating the end of the tokenizing words demo.
++
++}
++// This line marks the end of the "tokenizing" function.
+
+commit 9597683fcaa3294473036111203e6b6eb7b40671
+Author: Priscilla Lacerda <placerda-cavalcante@myseneca.ca>
+Date:   Tue Apr 16 21:28:45 2024 -0400
+
+    v2
+
+diff --git a/main.c b/main.c
+new file mode 100644
+index 0000000..47e2669
+--- /dev/null
++++ b/main.c
+@@ -0,0 +1,35 @@
++#define _CRT_SECURE_NO_WARNINGS // Preprocessor directive to suppress warnings related to certain functions
++#include "fundamentals.h" // import the fundamentals header
++#include "manipulating.h"// import the manipulating header
++#include "converting.h" // import the converting header
++#include "tokenizing.h"// import the tokenizing header
++
++int main (void) // // Function to demonstrate the main program V1
++{
++    char buff[10];
++    do // Loop until the user decides to quit
++    {   
++        // print the menu indicating the start of the main program, bringing the menu for input choice
++        printf("1 - Fundamentals\n"); 
++        printf("2 - Manipulation\n"); 
++        printf("3 - Converting\n"); 
++        printf("4 - Tokenizing\n"); 
++        printf("0 - Exit\n");
++        printf("Which module to run? \n"); 
++        fgets(buff, 10, stdin); // Read input from the user
++        switch (buff[0]) // initiate the switch case based on the menu input choice, bringing the modules code to run
++        {
++        case '1': fundamentals ();
++            break;
++        case '2': manipulating ();
++            break;
++        case '3': converting();
++            break;
++        case '4': tokenizing();
++            break;
++        }
++        
++    } while (buff[0] != '0'); // condition to the loop continue
++return 0; // exit code of the program
++
++}
