@@ -1,0 +1,183 @@
+commit 12a47cd97e9b41e1d3351eda78e3b6ee0c961e74
+Author: Kiet Dung Truong <kdtruong@myseneca.ca>
+Date:   Tue Apr 16 19:47:06 2024 -0400
+
+    v3
+
+diff --git a/manipulating.c b/manipulating.c
+index 24a8e93..cdf6947 100644
+--- a/manipulating.c
++++ b/manipulating.c
+@@ -1,33 +1,57 @@
+ // MANIPULATING SOURCE
++
++// Disabling secure warnings
+ #define CRT_SECURE_NO_WARNINGS
++
++// Defining buffer size for input
+ #define BUFFER_SIZE 80
+-#include "manipulating.h"
+ 
+-void manipulating (void) {
+-    printf("*** Start of Comparing Strings Demo ***\n");
+-    char compare1[BUFFER_SIZE];
+-    char compare2[BUFFER_SIZE];
+-    int result;
+-    // Loop until the user enters 'q' to quit
+-do {
+-    printf ("Type the 1st string to compare (q - to quit): \n"); 
+-    fgets (compare1, BUFFER_SIZE, stdin);
+-    compare1[strlen(compare1) - 1] = '\0';// Remove the newline character
+-    // Check if the entered string is not 'q'
+-    if (strcmp(compare1, "q") != 0) {
+-        printf ("Type the 2nd string to compare: \n"); 
+-        fgets (compare2, BUFFER_SIZE, stdin);
+-        compare2 [strlen(compare2) - 1] = '\0';// Remove the newline character
+-        // Compare the two strings
+-        result=strcmp(compare1, compare2);
+-        if (result < 0)
+-            printf("\'%s\' string is less than \'%s\'\n", compare1, compare2);
+-        else if (result == 0)
+-            printf("\'%s\' string is equal to \'%s\'\n", compare1, compare2);
+-        else
+-            printf("\'%s\' string is greater than \'%s\'\n", compare1, compare2);
+-    }
+-} while (strcmp(compare1, "q") != 0);// Continue the loop until 'q' is entered
+-printf("*** End of Comparing strings Demo ***\n\n");
++// Including header file for the manipulating module
++#include "manipulating.h"
+ 
+-}
+\ No newline at end of file
++// V3
++void manipulating(void) {
++    // Print start message
++    printf("*** Start of Searching Strings Demo ***\n");
++    
++    // Declare variables
++    char haystack[BUFFER_SIZE]; // Buffer to store input string
++    char needle[BUFFER_SIZE];   // Buffer to store substring
++    char* occurrence = NULL;    // Pointer to store the occurrence of substring
++    
++    // Start of do-while loop to repeatedly search for substring
++    do {
++        // Prompt for input string
++        printf("Type the string (q - to quit):\n");
++        
++        // Read input string from user
++        fgets(haystack, BUFFER_SIZE, stdin);
++        
++        // Remove newline character from input string
++        haystack[strlen(haystack) - 1] = '\0';
++        
++        // Check if input string is not 'q'
++        if (strcmp(haystack, "q") != 0) {
++            // Prompt for substring
++            printf("Type the substring:\n");
++            
++            // Read substring from user
++            fgets(needle, BUFFER_SIZE, stdin);
++            
++            // Remove newline character from substring
++            needle[strlen(needle) - 1] = '\0';
++            
++            // Search for substring in input string
++            occurrence = strstr(haystack, needle);
++            
++            // Check if substring is found
++            if (occurrence)
++                printf("'%s' found at %d position\n", needle, (int)(occurrence - haystack));
++            else
++                printf("Not found\n");
++        }
++    } while (strcmp(haystack, "q") != 0); // Continue loop until input string is 'q'
++    
++    // Print end message
++    printf("*** End of Searching Strings Demo ***\n\n");
++}
+diff --git a/manipulating.h b/manipulating.h
+index 4c7ab15..63bc8fd 100644
+--- a/manipulating.h
++++ b/manipulating.h
+@@ -1,7 +1,15 @@
+ // MANIPULATING MODULE HEADER
++
++// Header guard to prevent multiple inclusion
+ #ifndef _MANIPULATING_H_
+ #define _MANIPULATING_H_
+-#include <stdio.h>
+-#include <string.h> 
+-void manipulating (void);
+-#endif
+\ No newline at end of file
++
++// Including necessary header files
++#include <stdio.h>    // For standard input/output functions
++#include <string.h>   // For string manipulation functions
++
++// Function prototype for manipulating function
++void manipulating(void);
++
++// End of header guard
++#endif
+
+commit 4ca46bdf28985d95cce8fc1aec7ba7dae0a7203d
+Author: Kiet Dung Truong <kdtruong@myseneca.ca>
+Date:   Tue Apr 16 19:46:45 2024 -0400
+
+    v2
+
+diff --git a/manipulating.c b/manipulating.c
+new file mode 100644
+index 0000000..24a8e93
+--- /dev/null
++++ b/manipulating.c
+@@ -0,0 +1,33 @@
++// MANIPULATING SOURCE
++#define CRT_SECURE_NO_WARNINGS
++#define BUFFER_SIZE 80
++#include "manipulating.h"
++
++void manipulating (void) {
++    printf("*** Start of Comparing Strings Demo ***\n");
++    char compare1[BUFFER_SIZE];
++    char compare2[BUFFER_SIZE];
++    int result;
++    // Loop until the user enters 'q' to quit
++do {
++    printf ("Type the 1st string to compare (q - to quit): \n"); 
++    fgets (compare1, BUFFER_SIZE, stdin);
++    compare1[strlen(compare1) - 1] = '\0';// Remove the newline character
++    // Check if the entered string is not 'q'
++    if (strcmp(compare1, "q") != 0) {
++        printf ("Type the 2nd string to compare: \n"); 
++        fgets (compare2, BUFFER_SIZE, stdin);
++        compare2 [strlen(compare2) - 1] = '\0';// Remove the newline character
++        // Compare the two strings
++        result=strcmp(compare1, compare2);
++        if (result < 0)
++            printf("\'%s\' string is less than \'%s\'\n", compare1, compare2);
++        else if (result == 0)
++            printf("\'%s\' string is equal to \'%s\'\n", compare1, compare2);
++        else
++            printf("\'%s\' string is greater than \'%s\'\n", compare1, compare2);
++    }
++} while (strcmp(compare1, "q") != 0);// Continue the loop until 'q' is entered
++printf("*** End of Comparing strings Demo ***\n\n");
++
++}
+\ No newline at end of file
+diff --git a/manipulating.h b/manipulating.h
+new file mode 100644
+index 0000000..4c7ab15
+--- /dev/null
++++ b/manipulating.h
+@@ -0,0 +1,7 @@
++// MANIPULATING MODULE HEADER
++#ifndef _MANIPULATING_H_
++#define _MANIPULATING_H_
++#include <stdio.h>
++#include <string.h> 
++void manipulating (void);
++#endif
+\ No newline at end of file
